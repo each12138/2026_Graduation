@@ -12,7 +12,7 @@ from rclpy.node import Node
 
 
 class TempNavTcpBridge(Node):
-    def __init__(self, host: str, port: int, frame_id: str = "odom"):
+    def __init__(self, host: str, port: int, frame_id: str = "map"):
         super().__init__("temp_nav_tcp_bridge")
         self.host = host
         self.port = port
@@ -71,7 +71,12 @@ class TempNavTcpBridge(Node):
     def _send_nav_goal(self, goal_data: dict):
         try:
             goal_msg = NavigateToPose.Goal()
-            goal_msg.pose.header.frame_id = self.frame_id
+            payload_frame_id = goal_data.get("frame_id", self.frame_id)
+            if payload_frame_id is None:
+                payload_frame_id = self.frame_id
+            payload_frame_id = str(payload_frame_id).strip() or self.frame_id
+
+            goal_msg.pose.header.frame_id = payload_frame_id
             goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
 
             goal_msg.pose.pose.position.x = float(goal_data["position"]["x"])
@@ -85,6 +90,7 @@ class TempNavTcpBridge(Node):
 
             self.get_logger().info(
                 "Received goal: "
+                f"frame_id={goal_msg.pose.header.frame_id}, "
                 f"x={goal_msg.pose.pose.position.x:.3f}, "
                 f"y={goal_msg.pose.pose.position.y:.3f}"
             )
@@ -139,7 +145,7 @@ def main():
     parser = argparse.ArgumentParser(description="Temporary TCP bridge for Nav2")
     parser.add_argument("--host", default="127.0.0.1", help="TCP bind host")
     parser.add_argument("--port", type=int, default=5432, help="TCP bind port")
-    parser.add_argument("--frame-id", default="odom", help="Target frame_id for NavigateToPose")
+    parser.add_argument("--frame-id", default="map", help="Default frame_id for NavigateToPose")
     args = parser.parse_args()
 
     rclpy.init()

@@ -1,5 +1,6 @@
 import time
 import sys
+import os
 from unitree_sdk2py.core.channel import ChannelSubscriber, ChannelFactoryInitialize
 from unitree_sdk2py.idl.unitree_go.msg.dds_._SportModeState_ import SportModeState_
 
@@ -7,6 +8,10 @@ from unitree_sdk2py.idl.unitree_go.msg.dds_._SportModeState_ import SportModeSta
 class GetState:
     def __init__(self, topic="rt/sportmodestate"):
         self.topic = topic
+        state_frame = os.getenv("GO2_STATE_FRAME", "odom")
+        self.frame_id = str(state_frame).strip() if state_frame is not None else "odom"
+        if not self.frame_id:
+            self.frame_id = "odom"
         self.sub = ChannelSubscriber(self.topic, SportModeState_)
         self.sub.Init()
 
@@ -19,6 +24,7 @@ class GetState:
         quaternion = list(msg.imu_state.quaternion)
 
         return {
+            "frame_id": self.frame_id,
             "position": {
                 "x": float(position[0]),
                 "y": float(position[1]),

@@ -14,6 +14,8 @@ VYAW_RANGE = (-4.0, 4.0)
 DEFAULT_NAV_HOST = "127.0.0.1"
 DEFAULT_NAV_PORT = 5432
 DEFAULT_NAV_TIMEOUT = 5.0
+DEFAULT_NAV_FRAME = "map"
+DEFAULT_STATE_FRAME = "odom"
 
 
 class SkillManager:
@@ -30,6 +32,14 @@ class SkillManager:
             self.nav_timeout = float(os.getenv("GO2_NAV_TIMEOUT", str(DEFAULT_NAV_TIMEOUT)))
         except ValueError:
             self.nav_timeout = DEFAULT_NAV_TIMEOUT
+        nav_frame = os.getenv("GO2_NAV_FRAME", DEFAULT_NAV_FRAME)
+        self.nav_frame = str(nav_frame).strip() if nav_frame is not None else DEFAULT_NAV_FRAME
+        if not self.nav_frame:
+            self.nav_frame = DEFAULT_NAV_FRAME
+        state_frame = os.getenv("GO2_STATE_FRAME", DEFAULT_STATE_FRAME)
+        self.state_frame = str(state_frame).strip() if state_frame is not None else DEFAULT_STATE_FRAME
+        if not self.state_frame:
+            self.state_frame = DEFAULT_STATE_FRAME
 
     @staticmethod
     def _clamp(value, lower, upper, name):
@@ -182,6 +192,11 @@ class SkillManager:
                 "detail": pose_error,
             }
 
+        # State topic pose is not guaranteed to be in Nav2 map frame.
+        # Persist its frame to avoid later go_to frame mismatch.
+        if not isinstance(current_state.get("frame_id"), str) or not current_state.get("frame_id", "").strip():
+            current_state["frame_id"] = self.state_frame
+
         self.map.memory(name, current_state)
         print(f"已记忆当前位置: {name} -> {current_state}")
         return {"success": True, "name": name, "pose": current_state}
@@ -233,6 +248,7 @@ class SkillManager:
         )
 
         payload = {
+            "frame_id": str(pose.get("frame_id", self.nav_frame)).strip() or self.nav_frame,
             "position": {
                 "x": float(pose["position"]["x"]),
                 "y": float(pose["position"]["y"]),
