@@ -42,6 +42,31 @@ class SkillManager:
             self.state_frame = DEFAULT_STATE_FRAME
 
     @staticmethod
+    def _normalize_frame(frame_id, default_frame):
+        frame = str(frame_id).strip() if frame_id is not None else ""
+        return frame or default_frame
+
+    def _ensure_nav_frame_pose(self, pose, fallback_frame):
+        frame_id = self._normalize_frame(pose.get("frame_id"), fallback_frame)
+        if frame_id != self.nav_frame:
+            return (
+                False,
+                frame_id,
+                {
+                    "success": False,
+                    "error": "pose_frame_not_in_nav_frame",
+                    "detail": (
+                        f"pose frame_id is '{frame_id}', but persistent map requires "
+                        f"'{self.nav_frame}'. Convert pose to nav frame before saving or navigation."
+                    ),
+                    "source_frame": frame_id,
+                    "target_frame": self.nav_frame,
+                },
+            )
+        pose["frame_id"] = self.nav_frame
+        return True, frame_id, None
+
+    @staticmethod
     def _clamp(value, lower, upper, name):
         clamped = max(lower, min(upper, value))
         if clamped != value:
@@ -172,6 +197,11 @@ class SkillManager:
                     "error": "invalid_pose",
                     "detail": pose_error,
                 }
+            is_nav_frame_pose, _, frame_error = self._ensure_nav_frame_pose(
+                pose, self.nav_frame
+            )
+            if not is_nav_frame_pose:
+                return frame_error
             self.map.memory(name, pose)
             print(f"已记忆位置: {name} -> {pose}")
             return {"success": True, "name": name, "pose": pose}
@@ -192,10 +222,22 @@ class SkillManager:
                 "detail": pose_error,
             }
 
-        # State topic pose is not guaranteed to be in Nav2 map frame.
-        # Persist its frame to avoid later go_to frame mismatch.
-        if not isinstance(current_state.get("frame_id"), str) or not current_state.get("frame_id", "").strip():
-            current_state["frame_id"] = self.state_frame
+        state_frame = self._normalize_frame(current_state.get("frame_id"), self.state_frame)
+        current_state["frame_id"] = state_frame
+        is_nav_frame_pose, _, frame_error = self._ensure_nav_frame_pose(
+            current_state, self.state_frame
+        )
+        if not is_nav_frame_pose:
+            return {
+                "success": False,
+                "error": "state_pose_not_in_nav_frame",
+                "detail": (
+                    f"current state is in '{state_frame}', but persistent map requires "
+                    f"'{self.nav_frame}'. Convert odom pose to map pose before memory_position."
+                ),
+                "source_frame": state_frame,
+                "target_frame": self.nav_frame,
+            }
 
         self.map.memory(name, current_state)
         print(f"已记忆当前位置: {name} -> {current_state}")
@@ -241,6 +283,17 @@ class SkillManager:
                 "location": location,
                 "detail": pose_error,
             }
+        is_nav_frame_pose, pose_frame, frame_error = self._ensure_nav_frame_pose(
+            pose, self.nav_frame
+        )
+        if not is_nav_frame_pose:
+            frame_error["error"] = "pose_frame_mismatch_for_navigation"
+            frame_error["location"] = location
+            frame_error["detail"] = (
+                f"saved pose frame is '{pose_frame}', but navigation is configured for "
+                f"'{self.nav_frame}'. Refuse to send mixed-frame goal."
+            )
+            return frame_error
 
         # 3) 组包（协议: 4字节大端长度 + JSON）
         planar_qx, planar_qy, planar_qz, planar_qw = self._extract_planar_quat(
@@ -248,7 +301,7 @@ class SkillManager:
         )
 
         payload = {
-            "frame_id": str(pose.get("frame_id", self.nav_frame)).strip() or self.nav_frame,
+            "frame_id": self.nav_frame,
             "position": {
                 "x": float(pose["position"]["x"]),
                 "y": float(pose["position"]["y"]),
