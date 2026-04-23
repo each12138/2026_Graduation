@@ -17,9 +17,10 @@ DEFAULT_NAV_TIMEOUT = 5.0
 
 
 class SkillManager:
-    def __init__(self, sport_client=None):
+    def __init__(self, sport_client=None, semantic_map=None, state_client=None):
         self.sport_client = sport_client
-        self.map = global_vars.map
+        self.map = semantic_map if semantic_map is not None else global_vars.map
+        self.state_client = state_client
         self.nav_host = os.getenv("GO2_NAV_HOST", DEFAULT_NAV_HOST)
         try:
             self.nav_port = int(os.getenv("GO2_NAV_PORT", str(DEFAULT_NAV_PORT)))
@@ -165,6 +166,26 @@ class SkillManager:
             print(f"已记忆位置: {name} -> {pose}")
             return {"success": True, "name": name, "pose": pose}
 
+        state_client = self.state_client or getattr(global_vars, "state_client", None)
+        if state_client is None:
+            return {"success": False, "error": "state_client_not_initialized"}
+
+        current_state = state_client.get_state()
+        if current_state is None:
+            return {"success": False, "error": "state_unavailable"}
+
+        valid_pose, pose_error = self._validate_pose(current_state)
+        if not valid_pose:
+            return {
+                "success": False,
+                "error": "invalid_current_state_pose",
+                "detail": pose_error,
+            }
+
+        self.map.memory(name, current_state)
+        print(f"已记忆当前位置: {name} -> {current_state}")
+        return {"success": True, "name": name, "pose": current_state}
+
     def go_to(self, location: str = None):
         """
         根据语义位置名称，从地图中取出 pose 并通过 TCP 发送给导航桥接节点。
@@ -250,6 +271,26 @@ class SkillManager:
                 "detail": str(e),
             }
 
-    def patrol(self, locations: list):
-        # TODO
-        pass
+    def patrol(self, locations: list, continue_on_error: bool = False):
+        if not isinstance(locations, list) or not locations:
+            return {"success": False, "error": "invalid_locations"}
+
+        results = []
+        for location in locations:
+            if not isinstance(location, str) or not location.strip():
+                item_result = {
+                    "success": False,
+                    "location": location,
+                    "error": "invalid_location_name",
+                }
+            else:
+                item_result = self.go_to(location.strip())
+
+            results.append(item_result)
+            if not item_result.get("success", False) and not continue_on_error:
+                return {"success": False, "results": results}
+
+        return {
+            "success": all(item.get("success", False) for item in results),
+            "results": results,
+        }

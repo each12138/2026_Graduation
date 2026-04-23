@@ -1,13 +1,10 @@
 import whisper
 import pyaudio
 import wave
-import threading
-import time
 import os
-from torch.xpu import device
 
-# 初始化 whisper 模型
-model = whisper.load_model("tiny")  # 可选 "small", "medium", "large" 提高准确率
+# 懒加载 whisper 模型，避免模块导入阶段耗时或环境不满足导致启动失败。
+model = None
 LANGUAGE = "zh"
 # 音频配置
 FORMAT = pyaudio.paInt16
@@ -16,6 +13,13 @@ RATE = 16000
 CHUNK = 1024
 RECORD_SECONDS = 5  # 每段录音时长
 AUDIO_OUTPUT = "temp_audio.wav"
+
+
+def get_model():
+    global model
+    if model is None:
+        model = whisper.load_model("tiny")  # 可选 "small", "medium", "large" 提高准确率
+    return model
 
 def record_audio(filename, duration=5):
     audio = pyaudio.PyAudio()
@@ -43,7 +47,8 @@ def record_audio(filename, duration=5):
 
 
 def transcribe_audio(filename):
-    result = model.transcribe(
+    asr_model = get_model()
+    result = asr_model.transcribe(
         filename, 
         fp16=False,
         language=LANGUAGE,
