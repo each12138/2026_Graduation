@@ -1,0 +1,5 @@
+﻿cmake_minimum_required(VERSION 3.8)
+project(smartrobot_state_client)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY smartrobot_state_client DESTINATION share/${PROJECT_NAME})
+ament_package()
