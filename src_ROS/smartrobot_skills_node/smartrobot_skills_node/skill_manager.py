@@ -14,7 +14,6 @@ DEFAULT_NAV_HOST = "127.0.0.1"
 DEFAULT_NAV_PORT = 5432
 DEFAULT_NAV_TIMEOUT = 5.0
 DEFAULT_NAV_FRAME = "map"
-DEFAULT_STATE_FRAME = "odom"
 
 
 class SkillManager:
@@ -27,7 +26,6 @@ class SkillManager:
         self.nav_port = int(os.getenv("GO2_NAV_PORT", str(DEFAULT_NAV_PORT)))
         self.nav_timeout = float(os.getenv("GO2_NAV_TIMEOUT", str(DEFAULT_NAV_TIMEOUT)))
         self.nav_frame = (os.getenv("GO2_NAV_FRAME", DEFAULT_NAV_FRAME) or DEFAULT_NAV_FRAME).strip()
-        self.state_frame = (os.getenv("GO2_STATE_FRAME", DEFAULT_STATE_FRAME) or DEFAULT_STATE_FRAME).strip()
 
     @staticmethod
     def _clamp(value, lower, upper):
@@ -135,7 +133,7 @@ class SkillManager:
         if not valid:
             return {"success": False, "error": "invalid_pose", "detail": err}
 
-        frame = str(pose.get("frame_id", self.state_frame)).strip() or self.state_frame
+        frame = str(pose.get("frame_id", self.nav_frame)).strip() or self.nav_frame
         if frame != self.nav_frame:
             return {
                 "success": False,
