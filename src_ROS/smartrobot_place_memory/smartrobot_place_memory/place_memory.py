@@ -1,9 +1,9 @@
-import json
+﻿import json
 import os
 
 
 class PlaceMemory:
-    """Persistent named-place memory, not a geometric map."""
+    """基于 JSON 文件持久化保存命名地点记忆。"""
 
     def __init__(self, memory_file=None):
         if memory_file is None:

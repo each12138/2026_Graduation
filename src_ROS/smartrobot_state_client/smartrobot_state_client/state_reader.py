@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 import time
 import threading
@@ -14,12 +14,12 @@ def _env_flag(name: str, default: bool) -> bool:
 
 
 class _GlobalPoseReader:
-    """Best-effort ROS2 global pose reader from /amcl_pose."""
+    """从 ROS2 全局位姿话题读取机器人最新位姿。"""
 
     def __init__(self):
         self.enabled = _env_flag("GO2_GLOBAL_POSE_ENABLE", True)
         self.topic = os.getenv("GO2_GLOBAL_POSE_TOPIC", "/amcl_pose")
-        self.timeout_sec = float(os.getenv("GO2_GLOBAL_POSE_TIMEOUT", "2.0"))
+        self.timeout_sec = float(os.getenv("GO2_GLOBAL_POSE_TIMEOUT", "1.0"))
         self.default_frame = os.getenv("GO2_NAV_FRAME", "map").strip() or "map"
         self._latest = None
         self._latest_time = 0.0
@@ -39,7 +39,6 @@ class _GlobalPoseReader:
             from rclpy.node import Node
             from geometry_msgs.msg import PoseWithCovarianceStamped
         except Exception:
-            # rclpy not available in current runtime, fall back to DDS state.
             self.enabled = False
             self._alive = False
             return
@@ -112,7 +111,7 @@ class _GlobalPoseReader:
 
 
 class StateReader:
-    """Read pose from ROS2 global pose topic only (default: /amcl_pose)."""
+    """对外提供机器人状态读取接口。"""
 
     def __init__(self):
         self.global_reader = _GlobalPoseReader()
@@ -124,7 +123,7 @@ class StateReader:
         self.global_reader.close()
 
 
-if __name__ == "__main__":
+def main():
     network_interface = sys.argv[1] if len(sys.argv) > 1 else None
     if network_interface:
         ChannelFactoryInitialize(0, network_interface)
@@ -141,3 +140,7 @@ if __name__ == "__main__":
             time.sleep(1.0)
     finally:
         reader.close()
+
+
+if __name__ == "__main__":
+    main()

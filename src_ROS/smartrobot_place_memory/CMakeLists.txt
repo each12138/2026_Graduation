@@ -1,5 +1,0 @@
-﻿cmake_minimum_required(VERSION 3.8)
-project(smartrobot_place_memory)
-find_package(ament_cmake REQUIRED)
-install(DIRECTORY smartrobot_place_memory config DESTINATION share/${PROJECT_NAME})
-ament_package()

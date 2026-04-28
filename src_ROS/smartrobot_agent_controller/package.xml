@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package format="3">
+  <name>smartrobot_agent_controller</name>
+  <version>0.0.1</version>
+  <description>SmartRobot 的智能体和 LLM 决策控制组件。</description>
+  <maintainer email="dev@example.com">dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>python3</exec_depend>
+  <exec_depend>smartrobot_place_memory</exec_depend>
+  <exec_depend>smartrobot_state_client</exec_depend>
+  <exec_depend>smartrobot_skill_controller</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

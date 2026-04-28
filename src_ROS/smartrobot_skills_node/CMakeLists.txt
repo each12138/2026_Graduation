@@ -1,5 +1,0 @@
-﻿cmake_minimum_required(VERSION 3.8)
-project(smartrobot_skills_node)
-find_package(ament_cmake REQUIRED)
-install(DIRECTORY smartrobot_skills_node DESTINATION share/${PROJECT_NAME})
-ament_package()

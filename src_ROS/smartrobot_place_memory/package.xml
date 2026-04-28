@@ -2,9 +2,13 @@
 <package format="3">
   <name>smartrobot_place_memory</name>
   <version>0.0.1</version>
-  <description>Persistent place memory for named robot places.</description>
+  <description>SmartRobot 的命名地点记忆组件。</description>
   <maintainer email="dev@example.com">dev</maintainer>
   <license>MIT</license>
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
   <exec_depend>python3</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
 </package>

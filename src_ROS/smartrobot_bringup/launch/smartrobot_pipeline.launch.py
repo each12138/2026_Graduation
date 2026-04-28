@@ -1,12 +1,14 @@
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess
+from launch_ros.actions import Node
 
 
 def generate_launch_description():
     return LaunchDescription(
         [
-            ExecuteProcess(
-                cmd=["python3", "-m", "smartrobot_bringup.smartrobot_bringup.pipeline"],
+            Node(
+                package="smartrobot_bringup",
+                executable="smartrobot_pipeline",
+                name="smartrobot_pipeline",
                 output="screen",
             )
         ]
