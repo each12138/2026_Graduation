@@ -1,0 +1,13 @@
+{
+  "package_name": "unitree_api",
+  "non_idl_tuples": [
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/Request.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/RequestHeader.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/RequestIdentity.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/RequestLease.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/RequestPolicy.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/Response.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/ResponseHeader.msg",
+    "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api:msg/ResponseStatus.msg"
+  ]
+}

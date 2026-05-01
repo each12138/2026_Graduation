@@ -1,0 +1,161 @@
+[0.445s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/go2_sport_api -DCMAKE_INSTALL_PREFIX=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api
+[0.531s] -- The C compiler identification is GNU 9.4.0
+[0.628s] -- The CXX compiler identification is GNU 9.4.0
+[0.649s] -- Detecting C compiler ABI info
+[0.747s] -- Detecting C compiler ABI info - done
+[0.781s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.781s] -- Detecting C compile features
+[0.782s] -- Detecting C compile features - done
+[0.789s] -- Detecting CXX compiler ABI info
+[0.902s] -- Detecting CXX compiler ABI info - done
+[0.929s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.930s] -- Detecting CXX compile features
+[0.931s] -- Detecting CXX compile features - done
+[0.936s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.944s] [33mCMake Warning (dev) at /opt/ros/foxy/share/ament_cmake_core/cmake/core/python.cmake:22 (find_package):
+[0.944s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[0.944s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[0.944s]   the cmake_policy command to set the policy and suppress this warning.
+[0.945s] 
+[0.945s] Call Stack (most recent call first):
+[0.945s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/all.cmake:53 (include)
+[0.945s]   /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_core-extras.cmake:17 (include)
+[0.945s]   /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)
+[0.945s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)
+[0.945s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)
+[0.945s]   CMakeLists.txt:33 (find_package)
+[0.945s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.945s] [0m
+[0.986s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3")
+[0.988s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.366s] -- Found unitree_go: 0.0.0 (/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/share/unitree_go/cmake)
+[1.428s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.440s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.621s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")
+[1.683s] -- Found FastRTPS: /opt/ros/foxy/include
+[1.847s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.108s] -- Found unitree_api: 0.0.0 (/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake)
+[2.207s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.292s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.295s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[2.296s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.406s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[2.406s] -- Looking for pthread_create in pthreads
+[2.497s] -- Looking for pthread_create in pthreads - not found
+[2.497s] -- Looking for pthread_create in pthread
+[2.602s] -- Looking for pthread_create in pthread - found
+[2.605s] -- Found Threads: TRUE
+[2.828s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.943s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.097s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.103s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.104s] -- Configured cppcheck include dirs: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/go2_sport_api/include;/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/go2_sport_api/include/common;/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/go2_sport_api/include/nlohmann
+[3.104s] -- Configured cppcheck exclude dirs and/or files: 
+[3.109s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.110s] -- Configured cpplint exclude dirs and/or files: 
+[3.112s] -- Added test 'lint_cmake' to check CMake code style
+[3.118s] -- Added test 'uncrustify' to check C / C++ code style
+[3.118s] -- Configured uncrustify additional arguments: 
+[3.120s] -- Added test 'xmllint' to check XML markup files
+[3.124s] -- Configuring done (2.7s)
+[3.158s] -- Generating done (0.0s)
+[3.159s] -- Build files have been written to: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api
+[3.186s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api' returned '0': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/go2_sport_api -DCMAKE_INSTALL_PREFIX=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api
+[3.190s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api -- -j8 -l8
+[3.228s] [ 60%] [32mBuilding CXX object CMakeFiles/vel_ctrl.dir/src/vel_ctrl_repub.cpp.o[0m
+[3.228s] [ 60%] [32mBuilding CXX object CMakeFiles/go2_sport_api.dir/src/common/ros2_sport_client.cpp.o[0m
+[3.228s] [ 60%] [32mBuilding CXX object CMakeFiles/vel_ctrl.dir/src/common/ros2_sport_client.cpp.o[0m
+[6.572s] [ 80%] [32m[1mLinking CXX shared library libgo2_sport_api.so[0m
+[6.774s] [ 80%] Built target go2_sport_api
+[14.983s] [100%] [32m[1mLinking CXX executable vel_ctrl[0m
+[15.490s] [100%] Built target vel_ctrl
+[15.497s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api' returned '0': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api -- -j8 -l8
+[15.534s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api
+[15.543s] -- Install configuration: ""
+[15.544s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include
+[15.544s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/common
+[15.544s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/common/motor_crc.h
+[15.544s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/common/ros2_sport_client.h
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/adl_serializer.hpp
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/thirdparty
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/thirdparty/hedley
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+[15.545s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/thirdparty/hedley/hedley.hpp
+[15.546s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/ordered_map.hpp
+[15.546s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/byte_container_with_subtype.hpp
+[15.546s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/json.hpp
+[15.547s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail
+[15.547s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/json_custom_base_class.hpp
+[15.547s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators
+[15.547s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/iterator_traits.hpp
+[15.548s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/iteration_proxy.hpp
+[15.548s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/primitive_iterator.hpp
+[15.548s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/json_reverse_iterator.hpp
+[15.548s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/internal_iterator.hpp
+[15.548s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/iterators/iter_impl.hpp
+[15.549s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/string_concat.hpp
+[15.549s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input
+[15.549s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/binary_reader.hpp
+[15.549s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/lexer.hpp
+[15.549s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/json_sax.hpp
+[15.550s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/input_adapters.hpp
+[15.550s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/parser.hpp
+[15.550s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/input/position_t.hpp
+[15.550s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/output
+[15.550s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/output/output_adapters.hpp
+[15.551s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/output/binary_writer.hpp
+[15.551s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/output/serializer.hpp
+[15.551s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/string_escape.hpp
+[15.551s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/conversions
+[15.551s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/conversions/to_chars.hpp
+[15.552s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/conversions/to_json.hpp
+[15.552s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/conversions/from_json.hpp
+[15.552s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/macro_scope.hpp
+[15.553s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/abi_macros.hpp
+[15.553s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/hash.hpp
+[15.553s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/json_ref.hpp
+[15.554s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/exceptions.hpp
+[15.554s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/macro_unscope.hpp
+[15.554s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/json_pointer.hpp
+[15.554s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/value_t.hpp
+[15.554s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/cpp_future.hpp
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/type_traits.hpp
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/call_std
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/call_std/end.hpp
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/call_std/begin.hpp
+[15.555s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/is_sax.hpp
+[15.556s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/std_fs.hpp
+[15.557s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/detected.hpp
+[15.557s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/identity_tag.hpp
+[15.561s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/detail/meta/void_t.hpp
+[15.562s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/include/include/nlohmann/json_fwd.hpp
+[15.565s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/lib/go2_sport_api/vel_ctrl
+[15.569s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/lib/go2_sport_api/vel_ctrl" to ""
+[15.569s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/lib/libgo2_sport_api.so
+[15.573s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/lib/libgo2_sport_api.so" to ""
+[15.573s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/library_path.sh
+[15.574s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/library_path.dsv
+[15.574s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/ament_index/resource_index/package_run_dependencies/go2_sport_api
+[15.575s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/ament_index/resource_index/parent_prefix_path/go2_sport_api
+[15.575s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/ament_prefix_path.sh
+[15.575s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/ament_prefix_path.dsv
+[15.575s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/path.sh
+[15.578s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/environment/path.dsv
+[15.579s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/local_setup.bash
+[15.579s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/local_setup.sh
+[15.579s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/local_setup.zsh
+[15.579s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/local_setup.dsv
+[15.579s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/package.dsv
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/ament_index/resource_index/packages/go2_sport_api
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/export_go2_sport_apiExport.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/export_go2_sport_apiExport-noconfig.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/ament_cmake_export_dependencies-extras.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/ament_cmake_export_libraries-extras.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/ament_cmake_export_include_directories-extras.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/ament_cmake_export_targets-extras.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/go2_sport_apiConfig.cmake
+[15.580s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/cmake/go2_sport_apiConfig-version.cmake
+[15.581s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_sport_api/share/go2_sport_api/package.xml
+[15.583s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api' returned '0': AMENT_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/go2_llm:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/unitree/cyclonedds_ws/install/cyclonedds:/opt/ros/foxy LD_LIBRARY_PATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib:/usr/local/cuda-11.4/lib64:/usr/local/lib:/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/unitree/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64 PYTHONPATH=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_go/lib/python3.8/site-packages:/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/go2_sport_api

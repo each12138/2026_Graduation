@@ -1,23 +1,30 @@
 已有地图前提下的启动顺序
 
 1. 首次或代码更新后编译
-cd ~/codespace/go2_ros2_toolbox_division_llm
-colcon build --packages-select go2_navigation go2_llm
+cd ~/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm
+colcon build 
 source install/setup.bash
 
 2. 终端1：启动机器人底层、点云处理、定位与导航
-source ~/codespace/go2_ros2_toolbox_division_llm/install/setup.bash
-ros2 launch go2_core go2_localization_nav.launch.py map:=/home/unitree/map/go2_slam_ninelab.yaml
+source /opt/ros/foxy/setup.bash
+source ~/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/setup.bash
+ros2 launch go2_core go2_localization_nav.launch.py
 
 3. 终端2：启动导航 TCP bridge
-source ~/codespace/go2_ros2_toolbox_division_llm/install/setup.bash
+source /opt/ros/foxy/setup.bash
+source ~/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/setup.bash
 ros2 run go2_navigation navigation_command_tcpbridge.py
 
-4. 终端3：启动 LLM 控制程序
-source ~/codespace/go2_ros2_toolbox_division_llm/install/setup.bash
+4. 终端3：启动amcl_pose
+cd ~/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/go2_llm/go2_llm/utils
+python3 amcl_pose_server.py
+
+5. 终端4：启动 LLM 控制程序
+source /opt/ros/foxy/setup.bash
+source ~/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/setup.bash
 ros2 run go2_llm main.py
 
-5. 在终端3中输入指令示例
+6. 在终端4中输入指令示例
 记住当前位置为门口
 导航到门口
 去门口

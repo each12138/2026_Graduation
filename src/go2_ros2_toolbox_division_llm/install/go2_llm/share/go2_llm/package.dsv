@@ -1,0 +1,11 @@
+source;share/go2_llm/hook/cmake_prefix_path.ps1
+source;share/go2_llm/hook/cmake_prefix_path.dsv
+source;share/go2_llm/hook/cmake_prefix_path.sh
+source;share/go2_llm/hook/pythonpath.ps1
+source;share/go2_llm/hook/pythonpath.dsv
+source;share/go2_llm/hook/pythonpath.sh
+source;share/go2_llm/local_setup.bash
+source;share/go2_llm/local_setup.dsv
+source;share/go2_llm/local_setup.ps1
+source;share/go2_llm/local_setup.sh
+source;share/go2_llm/local_setup.zsh

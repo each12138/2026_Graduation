@@ -1,0 +1,467 @@
+[2.638s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api -DCMAKE_INSTALL_PREFIX=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api
+[2.745s] -- The C compiler identification is GNU 9.4.0
+[2.900s] -- The CXX compiler identification is GNU 9.4.0
+[2.923s] -- Detecting C compiler ABI info
+[3.076s] -- Detecting C compiler ABI info - done
+[3.120s] -- Check for working C compiler: /usr/bin/cc - skipped
+[3.121s] -- Detecting C compile features
+[3.121s] -- Detecting C compile features - done
+[3.133s] -- Detecting CXX compiler ABI info
+[3.308s] -- Detecting CXX compiler ABI info - done
+[3.342s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.343s] -- Detecting CXX compile features
+[3.344s] -- Detecting CXX compile features - done
+[3.350s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[3.360s] [33mCMake Warning (dev) at /opt/ros/foxy/share/ament_cmake_core/cmake/core/python.cmake:22 (find_package):
+[3.369s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[3.369s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[3.369s]   the cmake_policy command to set the policy and suppress this warning.
+[3.370s] 
+[3.370s] Call Stack (most recent call first):
+[3.370s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/all.cmake:53 (include)
+[3.370s]   /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_core-extras.cmake:17 (include)
+[3.370s]   /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)
+[3.370s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)
+[3.370s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)
+[3.370s]   CMakeLists.txt:19 (find_package)
+[3.371s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[3.371s] [0m
+[3.400s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3")
+[3.400s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.991s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[4.056s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.068s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[4.347s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")
+[4.423s] -- Found FastRTPS: /opt/ros/foxy/include
+[4.610s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.777s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[4.805s] -- Found rosidl_generator_dds_idl: 0.7.1 (/opt/ros/foxy/share/rosidl_generator_dds_idl/cmake)
+[4.816s] [33mCMake Warning (dev) at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:40 (find_package):
+[4.816s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[4.816s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[4.816s]   the cmake_policy command to set the policy and suppress this warning.
+[4.816s] 
+[4.816s] Call Stack (most recent call first):
+[4.816s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[4.816s]   CMakeLists.txt:28 (rosidl_generate_interfaces)
+[4.816s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[4.817s] [0m
+[4.866s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10")
+[5.301s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[5.810s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[6.052s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.059s] [33mCMake Warning (dev) at /opt/ros/foxy/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:20 (find_package):
+[6.061s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[6.061s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[6.061s]   the cmake_policy command to set the policy and suppress this warning.
+[6.061s] 
+[6.061s] Call Stack (most recent call first):
+[6.061s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[6.062s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[6.062s]   CMakeLists.txt:28 (rosidl_generate_interfaces)
+[6.062s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[6.062s] [0m
+[6.114s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5")
+[6.118s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[6.120s] [33mCMake Warning (dev) at /opt/ros/foxy/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:45 (find_package):
+[6.120s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[6.120s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[6.121s]   the cmake_policy command to set the policy and suppress this warning.
+[6.121s] 
+[6.121s] Call Stack (most recent call first):
+[6.121s]   /opt/ros/foxy/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)
+[6.121s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[6.121s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[6.121s]   CMakeLists.txt:28 (rosidl_generate_interfaces)
+[6.121s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[6.121s] [0m
+[6.166s] [33mCMake Warning (dev) at /opt/ros/foxy/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:133 (find_package):
+[6.167s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[6.167s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[6.168s]   the cmake_policy command to set the policy and suppress this warning.
+[6.169s] 
+[6.169s] Call Stack (most recent call first):
+[6.170s]   /opt/ros/foxy/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)
+[6.170s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[6.170s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[6.170s]   CMakeLists.txt:28 (rosidl_generate_interfaces)
+[6.170s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[6.171s] [0m
+[6.191s] -- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5")
+[6.192s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[6.193s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[6.193s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+[6.237s] -- Found PythonExtra: .so
+[6.481s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[6.546s] -- Added test 'copyright' to check source files copyright and LICENSE
+[6.550s] -- Added test 'lint_cmake' to check CMake code style
+[6.552s] -- Added test 'xmllint' to check XML markup files
+[6.559s] -- Configuring done (3.9s)
+[6.721s] -- Generating done (0.2s)
+[6.722s] -- Build files have been written to: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api
+[6.773s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/unitree_pkgs/unitree_api -DCMAKE_INSTALL_PREFIX=/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api
+[6.782s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake --build /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api -- -j8 -l8
+[6.820s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[6.847s] [  3%] [34m[1mGenerating DDS interfaces[0m
+[6.848s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[7.706s] [  3%] Built target unitree_api__dds_connext_idl
+[8.458s] [  4%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/request__functions.c.o[0m
+[8.463s] [  5%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/request_header__functions.c.o[0m
+[8.488s] [  7%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/request_lease__functions.c.o[0m
+[8.489s] [  7%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/request_identity__functions.c.o[0m
+[8.508s] [  9%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/request_policy__functions.c.o[0m
+[8.523s] [ 10%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/response__functions.c.o[0m
+[8.638s] [ 11%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/response_header__functions.c.o[0m
+[8.704s] [ 12%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_generator_c.dir/rosidl_generator_c/unitree_api/msg/detail/response_status__functions.c.o[0m
+[8.970s] [ 13%] [32m[1mLinking C shared library libunitree_api__rosidl_generator_c.so[0m
+[9.149s] [ 13%] Built target unitree_api__rosidl_generator_c
+[9.185s] [ 13%] Built target unitree_api__cpp
+[9.210s] [ 14%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[9.238s] [ 15%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[9.255s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[9.260s] [ 18%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[9.279s] [ 19%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[10.714s] [ 20%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/request__type_support.cpp.o[0m
+[10.732s] [ 21%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/request_header__type_support.cpp.o[0m
+[10.741s] [ 22%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/request_identity__type_support.cpp.o[0m
+[10.828s] [ 23%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/request_lease__type_support.cpp.o[0m
+[10.844s] [ 25%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/request__type_support.cpp.o[0m
+[10.867s] [ 26%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/request__type_support.cpp.o[0m
+[10.904s] [ 27%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/request_policy__type_support.cpp.o[0m
+[10.918s] [ 28%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/request_header__type_support.cpp.o[0m
+[10.947s] [ 29%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/response__type_support.cpp.o[0m
+[10.982s] [ 30%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/response_header__type_support.cpp.o[0m
+[11.107s] [ 31%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_c.dir/rosidl_typesupport_c/unitree_api/msg/response_status__type_support.cpp.o[0m
+[11.154s] [ 32%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/request_identity__type_support.cpp.o[0m
+[11.180s] [ 34%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/request_header__type_support.cpp.o[0m
+[11.295s] [ 35%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/request__type_support.cpp.o[0m
+[11.335s] [ 36%] [32m[1mLinking CXX shared library libunitree_api__rosidl_typesupport_c.so[0m
+[11.470s] [ 37%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/request__type_support.c.o[0m
+[11.522s] [ 37%] Built target unitree_api__rosidl_typesupport_c
+[11.548s] [ 38%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/request_header__type_support.cpp.o[0m
+[11.622s] [ 39%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/request_header__type_support.c.o[0m
+[11.875s] [ 40%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/request_identity__type_support.c.o[0m
+[11.967s] [ 42%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/request_lease__type_support.cpp.o[0m
+[12.060s] [ 43%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/request_lease__type_support.c.o[0m
+[12.233s] [ 44%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/request_policy__type_support.c.o[0m
+[12.299s] [ 45%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/request_identity__type_support.cpp.o[0m
+[12.460s] [ 46%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/response__type_support.c.o[0m
+[12.464s] [ 47%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/request_policy__type_support.cpp.o[0m
+[12.535s] [ 48%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/response_header__type_support.c.o[0m
+[12.650s] [ 50%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/request_identity__type_support.cpp.o[0m
+[12.722s] [ 51%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/unitree_api/msg/detail/response_status__type_support.c.o[0m
+[12.771s] [ 52%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/request_lease__type_support.cpp.o[0m
+[12.878s] [ 53%] [32m[1mLinking C shared library libunitree_api__rosidl_typesupport_introspection_c.so[0m
+[13.065s] [ 53%] Built target unitree_api__rosidl_typesupport_introspection_c
+[13.121s] [ 54%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/request_lease__type_support.cpp.o[0m
+[13.456s] [ 55%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/request_policy__type_support.cpp.o[0m
+[13.576s] [ 56%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/response__type_support.cpp.o[0m
+[13.626s] [ 57%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/request_policy__type_support.cpp.o[0m
+[13.997s] [ 59%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/response_header__type_support.cpp.o[0m
+[14.073s] [ 60%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/response__type_support.cpp.o[0m
+[14.132s] [ 61%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/response__type_support.cpp.o[0m
+[14.196s] [ 62%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/response_header__type_support.cpp.o[0m
+[14.975s] [ 63%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/response_header__type_support.cpp.o[0m
+[15.422s] [ 64%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/unitree_api/msg/detail/dds_fastrtps/response_status__type_support.cpp.o[0m
+[15.473s] [ 65%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/unitree_api/msg/response_status__type_support.cpp.o[0m
+[15.726s] [ 67%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/unitree_api/msg/detail/response_status__type_support.cpp.o[0m
+[17.254s] [ 68%] [32m[1mLinking CXX shared library libunitree_api__rosidl_typesupport_cpp.so[0m
+[17.499s] [ 69%] [32m[1mLinking CXX shared library libunitree_api__rosidl_typesupport_introspection_cpp.so[0m
+[17.520s] [ 69%] Built target unitree_api__rosidl_typesupport_cpp
+[17.783s] [ 70%] [32m[1mLinking CXX shared library libunitree_api__rosidl_typesupport_fastrtps_cpp.so[0m
+[17.959s] [ 70%] Built target unitree_api__rosidl_typesupport_introspection_cpp
+[18.238s] [ 70%] Built target unitree_api__rosidl_typesupport_fastrtps_cpp
+[18.312s] [ 71%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[19.886s] [ 72%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/request__type_support_c.cpp.o[0m
+[21.167s] [ 73%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/response_status__type_support_c.cpp.o[0m
+[22.047s] [ 75%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/response_header__type_support_c.cpp.o[0m
+[23.054s] [ 76%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/response__type_support_c.cpp.o[0m
+[24.071s] [ 77%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/request_policy__type_support_c.cpp.o[0m
+[24.927s] [ 78%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/request_lease__type_support_c.cpp.o[0m
+[25.814s] [ 79%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/request_identity__type_support_c.cpp.o[0m
+[26.780s] [ 80%] [32mBuilding CXX object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/unitree_api/msg/detail/request_header__type_support_c.cpp.o[0m
+[27.643s] [ 81%] [32m[1mLinking CXX shared library libunitree_api__rosidl_typesupport_fastrtps_c.so[0m
+[27.845s] [ 81%] Built target unitree_api__rosidl_typesupport_fastrtps_c
+[27.865s] [ 81%] Built target unitree_api
+[27.887s] [ 82%] [34m[1mGenerating Python code for ROS interfaces[0m
+[29.765s] [ 82%] Built target unitree_api__py
+[29.781s] [ 84%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_request_s.c.o[0m
+[30.044s] [ 85%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_response_status_s.c.o[0m
+[30.206s] [ 86%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_response_header_s.c.o[0m
+[30.404s] [ 87%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_response_s.c.o[0m
+[30.606s] [ 88%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_request_policy_s.c.o[0m
+[30.811s] [ 89%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_request_lease_s.c.o[0m
+[30.985s] [ 90%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_request_identity_s.c.o[0m
+[31.185s] [ 92%] [32mBuilding C object CMakeFiles/unitree_api__python.dir/rosidl_generator_py/unitree_api/msg/_request_header_s.c.o[0m
+[31.349s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/unitree_api/libunitree_api__python.so[0m
+[31.431s] [ 93%] Built target unitree_api__python
+[31.455s] [ 94%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/unitree_api/_unitree_api_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[31.664s] [ 95%] [32m[1mLinking CXX shared library rosidl_generator_py/unitree_api/unitree_api_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so[0m
+[31.771s] [ 95%] Built target unitree_api__rosidl_typesupport_fastrtps_c__pyext
+[31.789s] [ 96%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/unitree_api/_unitree_api_s.ep.rosidl_typesupport_c.c.o[0m
+[31.989s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/unitree_api/unitree_api_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so[0m
+[32.066s] [ 97%] Built target unitree_api__rosidl_typesupport_c__pyext
+[32.095s] [ 98%] [32mBuilding C object CMakeFiles/unitree_api__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/unitree_api/_unitree_api_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[32.315s] [100%] [32m[1mLinking C shared library rosidl_generator_py/unitree_api/unitree_api_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so[0m
+[32.373s] [100%] Built target unitree_api__rosidl_typesupport_introspection_c__pyext
+[32.387s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake --build /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api -- -j8 -l8
+[32.857s] Invoking command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake --install /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api
+[32.866s] -- Install configuration: ""
+[32.867s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/ament_index/resource_index/rosidl_interfaces/unitree_api
+[32.867s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.867s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_header.h
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/rosidl_generator_c__visibility_control.h
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_lease.h
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response_status.h
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_identity.h
+[32.868s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request.h
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_policy.h
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response_header.h
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response.h
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__struct.h
+[32.869s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__functions.h
+[32.870s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__functions.c
+[32.870s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__functions.h
+[32.870s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__struct.h
+[32.870s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__type_support.h
+[32.874s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__type_support.h
+[32.874s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__functions.c
+[32.875s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__type_support.h
+[32.875s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__struct.h
+[32.875s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__functions.h
+[32.875s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__struct.h
+[32.875s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__type_support.h
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__functions.c
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__type_support.h
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__functions.h
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__type_support.h
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__functions.c
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__functions.c
+[32.876s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__functions.h
+[32.878s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__functions.c
+[32.878s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__type_support.h
+[32.878s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__struct.h
+[32.879s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__struct.h
+[32.879s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__functions.h
+[32.879s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__functions.h
+[32.880s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__functions.h
+[32.880s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__struct.h
+[32.893s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__type_support.h
+[32.894s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__functions.c
+[32.894s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__functions.c
+[32.894s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__struct.h
+[32.894s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/library_path.sh
+[32.897s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/library_path.dsv
+[32.898s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_generator_c.so
+[32.900s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_generator_c.so" to ""
+[32.900s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.901s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.901s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[32.902s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.902s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__rosidl_typesupport_fastrtps_c.h
+[32.902s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__rosidl_typesupport_fastrtps_c.h
+[32.903s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__rosidl_typesupport_fastrtps_c.h
+[32.903s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__rosidl_typesupport_fastrtps_c.h
+[32.904s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__rosidl_typesupport_fastrtps_c.h
+[32.904s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__rosidl_typesupport_fastrtps_c.h
+[32.905s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__rosidl_typesupport_fastrtps_c.h
+[32.905s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__rosidl_typesupport_fastrtps_c.h
+[32.906s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_fastrtps_c.so
+[32.907s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_fastrtps_c.so" to ""
+[32.908s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.908s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.908s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[32.909s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.909s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__rosidl_typesupport_fastrtps_cpp.hpp
+[32.910s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__rosidl_typesupport_fastrtps_cpp.hpp
+[32.910s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__rosidl_typesupport_fastrtps_cpp.hpp
+[32.911s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__rosidl_typesupport_fastrtps_cpp.hpp
+[32.911s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__rosidl_typesupport_fastrtps_cpp.hpp
+[32.912s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__rosidl_typesupport_fastrtps_cpp.hpp
+[32.912s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__rosidl_typesupport_fastrtps_cpp.hpp
+[32.913s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__rosidl_typesupport_fastrtps_cpp.hpp
+[32.913s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/dds_fastrtps
+[32.914s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_fastrtps_cpp.so
+[32.915s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_fastrtps_cpp.so" to ""
+[32.916s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.916s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.916s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[32.917s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.917s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__rosidl_typesupport_introspection_c.h
+[32.918s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__rosidl_typesupport_introspection_c.h
+[32.918s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__type_support.c
+[32.919s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__type_support.c
+[32.919s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__rosidl_typesupport_introspection_c.h
+[32.920s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__type_support.c
+[32.920s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__rosidl_typesupport_introspection_c.h
+[32.920s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__type_support.c
+[32.921s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__rosidl_typesupport_introspection_c.h
+[32.921s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__type_support.c
+[32.922s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__type_support.c
+[32.922s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__type_support.c
+[32.923s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__rosidl_typesupport_introspection_c.h
+[32.923s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__rosidl_typesupport_introspection_c.h
+[32.923s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__rosidl_typesupport_introspection_c.h
+[32.924s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__type_support.c
+[32.925s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_introspection_c.so
+[32.925s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_introspection_c.so" to ""
+[32.926s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_c.so
+[32.927s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_c.so" to ""
+[32.928s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.928s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.929s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_header.hpp
+[32.930s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response_header.hpp
+[32.930s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_identity.hpp
+[32.931s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request.hpp
+[32.931s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_lease.hpp
+[32.932s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response.hpp
+[32.932s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/request_policy.hpp
+[32.933s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/response_status.hpp
+[32.934s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.934s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__builder.hpp
+[32.935s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__builder.hpp
+[32.936s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__struct.hpp
+[32.936s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__type_support.hpp
+[32.937s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__traits.hpp
+[32.938s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__traits.hpp
+[32.938s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__traits.hpp
+[32.939s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__builder.hpp
+[32.940s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__traits.hpp
+[32.941s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__type_support.hpp
+[32.941s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__builder.hpp
+[32.943s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__type_support.hpp
+[32.943s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__struct.hpp
+[32.945s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__struct.hpp
+[32.945s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__builder.hpp
+[32.945s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__struct.hpp
+[32.945s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__traits.hpp
+[32.945s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__builder.hpp
+[32.946s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__struct.hpp
+[32.946s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__struct.hpp
+[32.947s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__traits.hpp
+[32.948s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__traits.hpp
+[32.948s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__type_support.hpp
+[32.949s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__struct.hpp
+[32.950s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__type_support.hpp
+[32.951s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__builder.hpp
+[32.952s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__builder.hpp
+[32.952s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__traits.hpp
+[32.952s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__type_support.hpp
+[32.953s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__type_support.hpp
+[32.953s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__struct.hpp
+[32.953s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__type_support.hpp
+[32.953s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/rosidl_generator_cpp__visibility_control.hpp
+[32.954s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api
+[32.954s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg
+[32.954s] -- Up-to-date: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail
+[32.954s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__rosidl_typesupport_introspection_cpp.hpp
+[32.954s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__type_support.cpp
+[32.955s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__type_support.cpp
+[32.955s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_policy__type_support.cpp
+[32.955s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__rosidl_typesupport_introspection_cpp.hpp
+[32.955s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__rosidl_typesupport_introspection_cpp.hpp
+[32.956s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_status__rosidl_typesupport_introspection_cpp.hpp
+[32.956s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__rosidl_typesupport_introspection_cpp.hpp
+[32.956s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__rosidl_typesupport_introspection_cpp.hpp
+[32.957s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_identity__rosidl_typesupport_introspection_cpp.hpp
+[32.957s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_header__type_support.cpp
+[32.957s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__type_support.cpp
+[32.957s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response__rosidl_typesupport_introspection_cpp.hpp
+[32.957s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request__type_support.cpp
+[32.958s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/request_lease__type_support.cpp
+[32.958s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/include/unitree_api/msg/detail/response_header__type_support.cpp
+[32.958s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_introspection_cpp.so
+[32.959s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_introspection_cpp.so" to ""
+[32.960s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_cpp.so
+[32.960s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__rosidl_typesupport_cpp.so" to ""
+[32.960s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/pythonpath.sh
+[32.963s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/pythonpath.dsv
+[32.963s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/__init__.py
+[33.036s] Compiling '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/__init__.py'...
+[33.049s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg
+[33.050s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response_header.py
+[33.050s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response_status_s.c
+[33.050s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_s.c
+[33.051s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_identity_s.c
+[33.051s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request.py
+[33.051s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_policy.py
+[33.051s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response.py
+[33.051s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_policy_s.c
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response_status.py
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_header.py
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/__init__.py
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_lease_s.c
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_identity.py
+[33.052s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response_header_s.c
+[33.053s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_response_s.c
+[33.053s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_lease.py
+[33.053s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/msg/_request_header_s.c
+[33.053s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so
+[33.054s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.055s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so
+[33.056s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.056s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so
+[33.056s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/python3.8/site-packages/unitree_api/unitree_api_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.057s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__python.so
+[33.057s] -- Set non-toolchain portion of runtime path of "/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/lib/libunitree_api__python.so" to ""
+[33.057s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/Request.idl
+[33.058s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestHeader.idl
+[33.058s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestIdentity.idl
+[33.059s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestLease.idl
+[33.059s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestPolicy.idl
+[33.059s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/Response.idl
+[33.059s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/ResponseHeader.idl
+[33.060s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/ResponseStatus.idl
+[33.060s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/Request.msg
+[33.060s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestHeader.msg
+[33.060s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestIdentity.msg
+[33.060s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestLease.msg
+[33.061s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/RequestPolicy.msg
+[33.061s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/Response.msg
+[33.061s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/ResponseHeader.msg
+[33.061s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/ResponseStatus.msg
+[33.062s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext
+[33.062s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/Request_.idl
+[33.063s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/RequestLease_.idl
+[33.063s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/RequestHeader_.idl
+[33.063s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/Response_.idl
+[33.063s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/ResponseHeader_.idl
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/ResponseStatus_.idl
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/RequestIdentity_.idl
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/msg/dds_connext/RequestPolicy_.idl
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/ament_index/resource_index/package_run_dependencies/unitree_api
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/ament_index/resource_index/parent_prefix_path/unitree_api
+[33.064s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/ament_prefix_path.sh
+[33.065s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/ament_prefix_path.dsv
+[33.065s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/path.sh
+[33.065s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/environment/path.dsv
+[33.065s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/local_setup.bash
+[33.066s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/local_setup.sh
+[33.066s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/local_setup.zsh
+[33.067s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/local_setup.dsv
+[33.067s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/package.dsv
+[33.067s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/ament_index/resource_index/packages/unitree_api
+[33.067s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_generator_cExport.cmake
+[33.068s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_generator_cExport-noconfig.cmake
+[33.071s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_introspection_cExport.cmake
+[33.072s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[33.072s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_cExport.cmake
+[33.072s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_cExport-noconfig.cmake
+[33.072s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_generator_cppExport.cmake
+[33.072s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_introspection_cppExport.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_cppExport.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_api__rosidl_typesupport_cppExport-noconfig.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/rosidl_cmake-extras.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/ament_cmake_export_dependencies-extras.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/ament_cmake_export_libraries-extras.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/ament_cmake_export_targets-extras.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/ament_cmake_export_include_directories-extras.cmake
+[33.073s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[33.074s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[33.074s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_apiConfig.cmake
+[33.074s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/cmake/unitree_apiConfig-version.cmake
+[33.074s] -- Installing: /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/install/unitree_api/share/unitree_api/package.xml
+[33.081s] Invoked command in '/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/local/bin/cmake --install /home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api
