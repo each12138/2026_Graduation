@@ -12,7 +12,8 @@ VYAW_RANGE = (-4.0, 4.0)
 
 DEFAULT_NAV_HOST = "127.0.0.1"
 DEFAULT_NAV_PORT = 5432
-DEFAULT_NAV_TIMEOUT = 5.0
+DEFAULT_NAV_CONNECT_TIMEOUT = 5.0
+DEFAULT_NAV_RESULT_TIMEOUT = 60.0
 DEFAULT_NAV_FRAME = "map"
 
 
@@ -27,9 +28,13 @@ class SkillManager:
         except ValueError:
             self.nav_port = DEFAULT_NAV_PORT
         try:
-            self.nav_timeout = float(os.getenv("GO2_NAV_TIMEOUT", str(DEFAULT_NAV_TIMEOUT)))
+            self.nav_connect_timeout = float(os.getenv("GO2_NAV_CONNECT_TIMEOUT", str(DEFAULT_NAV_CONNECT_TIMEOUT)))
         except ValueError:
-            self.nav_timeout = DEFAULT_NAV_TIMEOUT
+            self.nav_connect_timeout = DEFAULT_NAV_CONNECT_TIMEOUT
+        try:
+            self.nav_result_timeout = float(os.getenv("GO2_NAV_RESULT_TIMEOUT", str(DEFAULT_NAV_RESULT_TIMEOUT)))
+        except ValueError:
+            self.nav_result_timeout = DEFAULT_NAV_RESULT_TIMEOUT
         nav_frame = os.getenv("GO2_NAV_FRAME_ID", DEFAULT_NAV_FRAME)
         self.nav_frame = str(nav_frame).strip() if nav_frame is not None else DEFAULT_NAV_FRAME
         if not self.nav_frame:
@@ -82,6 +87,26 @@ class SkillManager:
         )
         half_yaw = 0.5 * yaw
         return 0.0, 0.0, math.sin(half_yaw), math.cos(half_yaw)
+
+    @staticmethod
+    def _recv_exact(sock: socket.socket, size: int):
+        data = b""
+        while len(data) < size:
+            chunk = sock.recv(size - len(data))
+            if not chunk:
+                return None
+            data += chunk
+        return data
+
+    def _recv_json_response(self, sock: socket.socket):
+        length_data = self._recv_exact(sock, 4)
+        if not length_data:
+            return None, "no_response_length"
+        payload_len = struct.unpack("!I", length_data)[0]
+        payload = self._recv_exact(sock, payload_len)
+        if not payload:
+            return None, "no_response_payload"
+        return json.loads(payload.decode("utf-8")), None
 
     def _validate_pose(self, pose):
         if not isinstance(pose, dict):
@@ -244,28 +269,40 @@ class SkillManager:
                 "z": planar_qz,
                 "w": planar_qw,
             },
+            "timeout_sec": self.nav_result_timeout,
         }
 
         try:
-            data = json.dumps(payload).encode("utf-8")
+            data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
             length_prefix = struct.pack("!I", len(data))
 
-            with socket.create_connection((self.nav_host, self.nav_port), timeout=self.nav_timeout) as sock:
+            # 真正等待导航完成
+            with socket.create_connection((self.nav_host, self.nav_port), timeout=self.nav_connect_timeout) as sock:
+                sock.settimeout(self.nav_result_timeout)
                 sock.sendall(length_prefix + data)
-
-            print(f"已发送导航目标 {location} -> {payload}")
-            return {
-                "success": True,
-                "sent": True,
-                "status": "navigation_goal_sent",
-                "message": "导航目标已发送，未等待机器人抵达目标点。",
-                "location": location,
-                "pose": payload,
-            }
+                response, error = self._recv_json_response(sock)
+                
+            success = isinstance(response, dict) and response.get("success") is True
+            if success:
+                print(f"导航成功 {location} -> {payload}")
+                return {
+                    "success": True,
+                    "location": location,
+                    "pose": payload,
+                }
+                
+            else:
+                print(f"导航失败 {location} -> {payload}")
+                return {
+                    "success": False,
+                    "error": "navigation_failed",
+                    "location": location,
+                    "pose": payload,
+                }
         except Exception as exc:
-            print(f"发送导航目标失败: {exc}")
+            print(f"导航请求失败: {exc}")
             return {
                 "success": False,
-                "error": "navigation_send_failed",
+                "error": "navigation_request_failed",
                 "detail": str(exc),
             }

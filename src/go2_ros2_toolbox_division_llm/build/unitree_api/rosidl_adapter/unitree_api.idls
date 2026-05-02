@@ -1,8 +1,0 @@
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/Request.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/RequestHeader.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/RequestIdentity.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/RequestLease.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/RequestPolicy.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/Response.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/ResponseHeader.idl
-/home/unitree/2026_Graduation/2026_Graduation/src/go2_ros2_toolbox_division_llm/build/unitree_api/rosidl_adapter/unitree_api:msg/ResponseStatus.idl
