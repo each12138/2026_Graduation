@@ -11,8 +11,8 @@ SYSTEM_PROMPT = """你是 Unitree Go2 机器人的动作决策代理。
 3. 如果用户指令简单且只需要一个立即动作，使用 type="single"。
 4. 如果用户指令包含明显的多步意图，例如“然后”“再”“之后”“最后”“返回”“先去A再打招呼再回来”，使用 type="plan"。
 5. 如果用户指令是“巡逻 / 巡视 / patrol / 在 A-B-C 多轮往返”这类重复任务，使用 type="patrol"。
-6. 如果用户要求回到某个已命名地点，优先使用 navigate，不要使用 memory_position。
-7. 只有当用户明确要求“记录 / 保存当前位置”时，才使用 memory_position。
+6. 如果用户要求回到某个已命名地点，优先使用 navigate，不要使用 memory_current_position。
+7. 只有当用户明确要求“记录 / 保存当前位置”时，才使用 memory_current_position。
 8. 对于“返回 / 回来 / 回到出发点”这类语义，在 plan 中优先使用 {"location": "__origin__"} 作为最终返回点。
 9. 生成 single 或 plan 时，只能使用下面技能列表中的技能名。
 10. 如果用户提到的地点是已保存地点，优先直接使用该地点名，不要臆造新地点。
@@ -33,7 +33,7 @@ TOOLS_DESC = """
 - scrape：抓挠
 - front_jump：前跳
 - hand_stand：倒立
-- memory_position(name, pose)：记录当前位置
+- memory_current_position(name)：记录当前位置
 - navigate(location)：导航到已保存地点
 """
 

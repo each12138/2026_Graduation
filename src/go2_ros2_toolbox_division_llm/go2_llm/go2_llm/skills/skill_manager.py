@@ -40,20 +40,20 @@ class SkillManager:
         if not self.nav_frame:
             self.nav_frame = DEFAULT_NAV_FRAME
 
-    def _require_nav_frame_pose(self, pose):
-        frame_id = str(pose.get("frame_id", "")).strip() or self.nav_frame
+    def _check_nav_frame_pose(self, pose):
+        frame_id = str(pose.get("frame_id", "")).strip()
+        if not frame_id:
+            return {
+                "success": False,
+                "error": "pose_frame_id_missing",
+                "target_frame": self.nav_frame,
+            }
         if frame_id != self.nav_frame:
             return {
                 "success": False,
                 "error": "pose_frame_not_in_nav_frame",
-                "detail": (
-                    f"pose frame_id is '{frame_id}', but persistent map requires "
-                    f"'{self.nav_frame}'."
-                ),
-                "source_frame": frame_id,
-                "target_frame": self.nav_frame,
+                "pose_frame": frame_id,
             }
-        pose["frame_id"] = self.nav_frame
         return None
 
     @staticmethod
@@ -188,21 +188,20 @@ class SkillManager:
         self.sport_client.HandStand(False)
         return {"success": True}
 
-    def memory_position(self, name: str, pose: dict = None):
+    def memory_current_position(self, name: str):
         if self.semantic_map is None:
             return {"success": False, "error": "map_not_initialized"}
+
+        if self.state_reader is None:
+            return {"success": False, "error": "state_reader_not_initialized"}
 
         name = str(name).strip()
         if not name:
             return {"success": False, "error": "invalid_name"}
 
-        from_current_state = pose is None
+        pose = self.state_reader.get_state()
         if pose is None:
-            if self.state_reader is None:
-                return {"success": False, "error": "state_reader_not_initialized"}
-            pose = self.state_reader.get_state()
-            if pose is None:
-                return {"success": False, "error": "state_unavailable"}
+            return {"success": False, "error": "state_unavailable"}
 
         valid_pose, pose_error = self._validate_pose(pose)
         if not valid_pose:
@@ -212,15 +211,13 @@ class SkillManager:
                 "detail": pose_error,
             }
 
-        frame_error = self._require_nav_frame_pose(pose)
+        frame_error = self._check_nav_frame_pose(pose)
         if frame_error is not None:
-            if from_current_state:
-                frame_error["error"] = "state_pose_not_in_nav_frame"
             return frame_error
 
         self.semantic_map.memory(name, pose)
         print(f"已记忆位置 {name} -> {pose}")
-        return {"success": True, "name": name, "pose": pose}
+        return {"success": True, "name": name}
 
     def navigate(self, location: str = None):
         if self.semantic_map is None:
@@ -246,10 +243,8 @@ class SkillManager:
                 "detail": pose_error,
             }
 
-        frame_error = self._require_nav_frame_pose(pose)
+        frame_error = self._check_nav_frame_pose(pose)
         if frame_error is not None:
-            frame_error["error"] = "pose_frame_mismatch_for_navigation"
-            frame_error["location"] = location
             return frame_error
 
         planar_qx, planar_qy, planar_qz, planar_qw = self._extract_planar_quat(

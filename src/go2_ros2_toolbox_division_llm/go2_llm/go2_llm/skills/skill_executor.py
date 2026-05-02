@@ -26,7 +26,7 @@ class SkillExecutor:
             "scrape": self.skills_manager.scrape,
             "front_jump": self.skills_manager.front_jump,
             "hand_stand": self.skills_manager.hand_stand,
-            "memory_position": self.skills_manager.memory_position,
+            "memory_current_position": self.skills_manager.memory_current_position,
             "navigate": self.skills_manager.navigate,
         }
 

@@ -168,17 +168,16 @@ class ReActAgent:
         # 当计划中要“返回原点”时，先自动记录一次当前位置，
         # 避免后续 navigate("__origin__") 找不到目标点。
         result = self.skill_executor.execute(
-            "memory_position",
+            "memory_current_position",
             {
                 "name": "__origin__",
-                "pose": current_state,
             },
         )
         self._append_action_history(
             state=current_state,
             task=task,
-            action="memory_position",
-            params={"name": "__origin__", "pose": current_state},
+            action="memory_current_position",
+            params={"name": "__origin__"},
             result=result,
             task_id=task_id,
             task_type=task_type,
@@ -218,8 +217,8 @@ class ReActAgent:
             results.append(
                 {
                     "step_index": -1,
-                    "action": "memory_position",
-                    "params": {"name": "__origin__", "pose": current_state},
+                    "action": "memory_current_position",
+                    "params": {"name": "__origin__"},
                     "result": origin_result,
                 }
             )
@@ -237,6 +236,8 @@ class ReActAgent:
             action = step["action"]
             params = step["params"]
             result = self.skill_executor.execute(action, params)
+            
+            time.sleep(2.0)
 
             self._append_action_history(
                 state=current_state,
@@ -325,8 +326,10 @@ class ReActAgent:
 
                 step_index += 1
 
-                if wait_sec > 0:
+                if wait_sec > 1.0:
                     time.sleep(wait_sec)
+                else:
+                    time.sleep(1.0)
 
         return {
             "success": True,
