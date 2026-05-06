@@ -2,15 +2,12 @@ from pathlib import Path
 from typing import Any, Dict
 import json
 
+from ament_index_python.packages import get_package_share_directory
 import yaml
 
 
-def package_root() -> Path:
-    return Path(__file__).resolve().parents[2]
-
-
 def config_dir() -> Path:
-    return package_root() / "config"
+    return Path(get_package_share_directory("quadruped_llm_system")) / "config"
 
 
 def load_yaml(name: str) -> Dict[str, Any]:
