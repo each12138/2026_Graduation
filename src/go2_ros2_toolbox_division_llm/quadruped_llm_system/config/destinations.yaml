@@ -1,0 +1,9 @@
+frame_id: map
+destinations:
+  - id: start_position
+    name: 起点
+    aliases: [起点, 出发点, 起始点, start, starting position, origin]
+    pose:
+      x: 0.42
+      y: -1.66
+      yaw_deg: 180.0

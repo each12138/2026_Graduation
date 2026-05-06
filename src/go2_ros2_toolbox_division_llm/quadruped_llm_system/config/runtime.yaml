@@ -1,0 +1,25 @@
+system:
+  frame_id: map
+
+dialogue:
+  nav_confidence_threshold: 0.72
+  max_candidates: 3
+  max_clarify_turns: 2
+  clarify_timeout_s: 15.0
+
+navigation:
+  ack_timeout_s: 20.0
+  result_timeout_s: 90.0
+  terminal_confirm_s: 0.5
+  arrival_radius_m: 0.5
+
+speaker:
+  simulated_playback_sec: 1.2
+
+llm:
+  api_key_env: DEEPSEEK_API_KEY
+  api_url: https://api.deepseek.com/v1/chat/completions
+  model: deepseek-chat
+  temperature: 0.2
+  timeout_s: 20
+  enabled: false
