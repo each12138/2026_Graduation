@@ -40,6 +40,7 @@ class DialogueRouterNode(Node):
         msg.data = to_json(payload)
         self.pub_events.publish(msg)
 
+    # 匹配判断是不是导航相关的语句，简单的关键词匹配，后续可以考虑更复杂的分类模型
     def _looks_like_navigation(self, text: str) -> bool:
         text = text.lower()
         keys = [
@@ -48,6 +49,7 @@ class DialogueRouterNode(Node):
         ]
         return any(k in text for k in keys)
 
+    # 从用户输入中提取目的地相关的部分，去掉一些常见的引导词，方便后续匹配和理解
     def _extract_destination_query(self, text: str) -> str:
         cleaned = text.strip()
         patterns = [
@@ -58,6 +60,7 @@ class DialogueRouterNode(Node):
             cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE).strip()
         return cleaned or text.strip()
 
+    # 在候选列表中根据用户的回复选择一个目的地，支持序数词和直接匹配
     def _ordinal_pick(self, text: str, candidates: List[str]) -> Optional[str]:
         mapping = {
             "1": 0, "one": 0, "first": 0, "第一个": 0,
@@ -70,6 +73,7 @@ class DialogueRouterNode(Node):
                 return candidates[idx]
         return None
 
+    # 发布导航目标确认
     def _emit_ack(self, dest_id: str, request_source: str, confidence: float) -> None:
         dest = self.places.get(dest_id)
         request_id = new_request_id("nav")
@@ -88,6 +92,7 @@ class DialogueRouterNode(Node):
             )
         )
 
+    # 发布需要澄清的事件，包含候选列表和当前尝试次数等信息
     def _emit_clarification(self, utterance: str, candidates: List[str], reason: str) -> None:
         self.mode = "AWAITING_CLARIFICATION"
         self.clarify_candidates = candidates[: self.max_candidates]
@@ -111,6 +116,7 @@ class DialogueRouterNode(Node):
             )
         )
 
+    # 处理用户对澄清问题的回答，尝试从中选出一个目的地，如果无法确定则根据尝试次数决定是否继续澄清还是放弃
     def _handle_clarification_reply(self, text: str) -> None:
         picked = self._ordinal_pick(text, self.clarify_candidates)
         if picked is None:
@@ -138,14 +144,17 @@ class DialogueRouterNode(Node):
 
         self._emit_clarification(text, self.clarify_candidates, "clarification_reply_unresolved")
 
+    # 处理导航请求
     def _handle_navigation_request(self, text: str) -> None:
         query = self._extract_destination_query(text)
 
+        # 首先尝试精确匹配
         direct = self.places.resolve_direct(query)
         if direct:
             self._emit_ack(direct, "direct_alias", 0.95)
             return
 
+        # 模糊匹配，打分排序
         scored = self.places.scored_candidates(query, self.max_candidates)
         if not scored:
             self._publish_event(
@@ -158,6 +167,7 @@ class DialogueRouterNode(Node):
             )
             return
 
+        # 如果最高分的候选项分数过低，认为无法理解用户意图，直接发布未解析事件
         top_score = float(scored[0].get("score", 0.0))
         if top_score < self.nav_match_threshold:
             self._publish_event(
@@ -178,6 +188,7 @@ class DialogueRouterNode(Node):
             self._emit_ack(ranked[0], "heuristic_single", max(0.78, top_score))
             return
 
+        # 如果有多个候选项，调用LLM进行意图解析，看看能否从中选出一个明显优于其他的选项
         llm_parsed = self.llm.parse_nav_intent(query, self.places.as_catalog())
         dest_id = llm_parsed.get("destination_id")
         conf = float(llm_parsed.get("confidence", 0.0) or 0.0)
@@ -185,8 +196,11 @@ class DialogueRouterNode(Node):
             self._emit_ack(dest_id, "llm_direct", conf)
             return
 
+        # 如果LLM解析的结果不明确或者置信度不够高，则进入澄清流程
         self._emit_clarification(query, ranked, "ambiguous_destination")
 
+
+    # 接收到文本，先判断是不是澄清环节，再判断是不是导航相关的请求，最后如果都不是就当做一般的对话请求发布事件
     def _on_text(self, msg: String) -> None:
         text = msg.data.strip()
         if not text:

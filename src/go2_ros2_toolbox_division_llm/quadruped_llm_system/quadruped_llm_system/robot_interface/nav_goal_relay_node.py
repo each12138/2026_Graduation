@@ -8,7 +8,7 @@ from std_msgs.msg import String
 
 from quadruped_llm_system.common.events import from_json, make_event, to_json
 
-
+# 收到目标点后，调用NavigateToPose action server进行导航，并将结果转换成事件发布出去
 class NavGoalRelayNode(Node):
     def __init__(self) -> None:
         super().__init__("nav_goal_relay_node")
@@ -61,6 +61,7 @@ class NavGoalRelayNode(Node):
             return "nav_goal_canceled"
         return "nav_goal_failed"
 
+    # 收到目标点
     def _on_goal(self, msg: PoseStamped) -> None:
         self.get_logger().info(
             "goal received x={0:.2f} y={1:.2f} request_id={2}".format(
@@ -70,6 +71,7 @@ class NavGoalRelayNode(Node):
             )
         )
 
+        #action server不可用
         if not self._action_client.wait_for_server(timeout_sec=self.server_timeout_s):
             self.get_logger().error("navigate_to_pose action server not available")
             self._publish_nav_result("nav_goal_failed", "action_server_unavailable")
@@ -125,6 +127,7 @@ class NavGoalRelayNode(Node):
         self.get_logger().info("Navigation finished with status={0}".format(result.status))
         self._publish_nav_result(event_type)
 
+    # 打印导航过程中剩余距离的反馈信息
     def _feedback_callback(self, feedback_msg) -> None:
         try:
             remaining = feedback_msg.feedback.distance_remaining

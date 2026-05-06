@@ -25,6 +25,7 @@ class PlaceRepository:
 
     def _reload_dynamic(self) -> None:
         rows = []  # type: List[Dict[str, Any]]
+        # 预先加载静态别名，确保动态地点不会与静态地点冲突
         reserved_ids = set(self.static_registry.destinations.keys())
         reserved_aliases = set(self.static_registry.alias_to_id.keys())
 
@@ -45,6 +46,7 @@ class PlaceRepository:
                 key = DestinationRegistry._norm(str(alias))
                 if not key:
                     continue
+                # 检查别名是否与已保留的ID或别名冲突
                 if key in reserved_aliases:
                     conflict = True
                     break
@@ -122,6 +124,7 @@ class PlaceRepository:
             suffix += 1
             candidate_id = "mem_{0}_{1}".format(self._slug(clean_name), suffix)
 
+        
         for alias in [candidate_id, clean_name] + alias_list:
             owner = self.resolve_direct(str(alias))
             if owner is not None:

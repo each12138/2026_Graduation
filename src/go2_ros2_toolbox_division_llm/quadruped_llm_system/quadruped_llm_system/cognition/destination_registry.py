@@ -24,6 +24,7 @@ class DestinationRegistry:
         text = re.sub(r"\s+", " ", text)
         return text
 
+    # 把地点列表建成索引
     def _load(self, rows: List[Dict[str, Any]]) -> None:
         for row in rows:
             dest_id = str(row.get("id", "")).strip()
@@ -50,6 +51,7 @@ class DestinationRegistry:
                 "aliases": [],
             }
 
+            # 所有可匹配该item的名字
             all_aliases = [dest_id, name] + list(aliases)
             normalized = []
             for alias in all_aliases:
@@ -109,6 +111,7 @@ class DestinationRegistry:
         b_set = set(b.split())
         return len(a_set & b_set) / max(1, len(a_set | b_set))
 
+    # 把目的地列表转换成一个目录格式，包含id、name和别名用于展示
     def as_catalog(self) -> List[Dict[str, Any]]:
         return [
             {

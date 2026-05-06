@@ -10,7 +10,7 @@ from quadruped_llm_system.common.config import load_yaml, config_dir
 from quadruped_llm_system.common.events import from_json, make_event, to_json
 from quadruped_llm_system.cognition.place_repository import PlaceRepository
 
-
+# 夹在高层和导航层之间的控制层
 class NavControllerNode(Node):
     def __init__(self) -> None:
         super().__init__("nav_controller_node")
@@ -22,6 +22,7 @@ class NavControllerNode(Node):
         self.ack_timeout_s = float(nav_cfg.get("ack_timeout_s", 20.0))
         self.result_timeout_s = float(nav_cfg.get("result_timeout_s", 90.0))
 
+        # 状态机变量
         self.mode = "IDLE"
         self.pending_request_id = ""
         self.pending_destination_id = ""
@@ -64,12 +65,14 @@ class NavControllerNode(Node):
         ev_type = str(payload.get("type", "")).strip()
         request_id = str(payload.get("request_id", "")).strip()
 
+        # 收到“nav_ack_requested”事件，但不是立刻出发，等待播报完成
         if ev_type == "nav_ack_requested":
             self.mode = "AWAITING_ACK_PLAYBACK"
             self.pending_request_id = request_id
             self.pending_destination_id = str(payload.get("destination_id", "")).strip()
             return
 
+        # 收到“speech_done”事件，确认是导航确认的播报完成且是当前任务了，才真正出发
         if ev_type == "speech_done" and str(payload.get("speech_kind", "")) == "nav_ack":
             if self.mode != "AWAITING_ACK_PLAYBACK" or request_id != self.pending_request_id:
                 return
@@ -92,6 +95,7 @@ class NavControllerNode(Node):
             self.pending_destination_id = ""
             return
 
+        # 收到导航结果事件，确认是当前任务的结果了，才进行状态更新和事件转发    
         if ev_type in {"nav_goal_succeeded", "nav_goal_failed", "nav_goal_canceled"}:
             if self.mode != "AWAITING_NAV_RESULT":
                 return
@@ -121,6 +125,7 @@ class NavControllerNode(Node):
             self.active_started_at = 0.0
             return
 
+    # 超时保护
     def _watchdog(self) -> None:
         if self.mode == "AWAITING_NAV_RESULT" and self.active_started_at > 0.0:
             if (time.monotonic() - self.active_started_at) > self.result_timeout_s:

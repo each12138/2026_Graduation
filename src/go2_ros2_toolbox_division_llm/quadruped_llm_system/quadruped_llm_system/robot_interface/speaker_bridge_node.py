@@ -7,7 +7,7 @@ from std_msgs.msg import String
 from quadruped_llm_system.common.config import load_yaml
 from quadruped_llm_system.common.events import from_json, make_event, to_json
 
-
+# 语音播报桥接节点
 class SpeakerBridgeNode(Node):
     def __init__(self) -> None:
         super().__init__("speaker_bridge_node")
