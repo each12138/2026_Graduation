@@ -1,6 +1,3 @@
-import time
-from typing import Optional
-
 import rclpy
 from action_msgs.msg import GoalStatus
 from geometry_msgs.msg import PoseStamped
@@ -26,10 +23,9 @@ class NavGoalRelayNode(Node):
         self.active_request_id = ""
         self.active_destination_id = ""
         self.active_destination_name = ""
+        self._active_goal_handle = None
 
         self.server_timeout_s = 5.0
-        self.result_timeout_s = 120.0
-        self.goal_response_timeout_s = 10.0
 
         self.get_logger().info("Nav goal relay ready. Using real NavigateToPose action.")
 
@@ -59,14 +55,6 @@ class NavGoalRelayNode(Node):
             )
         )
 
-    def _wait_for_future(self, future, timeout_sec: float):
-        deadline = time.time() + timeout_sec
-        while rclpy.ok() and time.time() < deadline:
-            if future.done():
-                return future.result()
-            time.sleep(0.05)
-        return None
-
     def _status_to_event(self, status: int) -> str:
         if status == GoalStatus.STATUS_SUCCEEDED:
             return "nav_goal_succeeded"
@@ -91,12 +79,23 @@ class NavGoalRelayNode(Node):
         goal_msg = NavigateToPose.Goal()
         goal_msg.pose = msg
 
-        send_goal_future = self._action_client.send_goal_async(goal_msg)
-        goal_handle = self._wait_for_future(send_goal_future, self.goal_response_timeout_s)
+        send_goal_future = self._action_client.send_goal_async(
+            goal_msg,
+            feedback_callback=self._feedback_callback,
+        )
+        send_goal_future.add_done_callback(self._on_goal_response)
+
+    def _on_goal_response(self, future) -> None:
+        try:
+            goal_handle = future.result()
+        except Exception as exc:
+            self.get_logger().error("Goal response exception: {0}".format(exc))
+            self._publish_nav_result("nav_goal_failed", "goal_response_exception")
+            return
 
         if goal_handle is None:
-            self.get_logger().error("Goal response timed out")
-            self._publish_nav_result("nav_goal_failed", "goal_response_timeout")
+            self.get_logger().error("Goal response is None")
+            self._publish_nav_result("nav_goal_failed", "goal_response_none")
             return
 
         if not goal_handle.accepted:
@@ -105,22 +104,34 @@ class NavGoalRelayNode(Node):
             return
 
         self.get_logger().info("Goal accepted by NavigateToPose")
+        self._active_goal_handle = goal_handle
 
         result_future = goal_handle.get_result_async()
-        result = self._wait_for_future(result_future, self.result_timeout_s)
+        result_future.add_done_callback(self._on_nav_result)
+
+    def _on_nav_result(self, future) -> None:
+        try:
+            result = future.result()
+        except Exception as exc:
+            self.get_logger().error("Navigation result exception: {0}".format(exc))
+            self._publish_nav_result("nav_goal_failed", "result_exception")
+            return
 
         if result is None:
-            self.get_logger().error("Navigation result timed out")
-            try:
-                goal_handle.cancel_goal_async()
-            except Exception:
-                pass
-            self._publish_nav_result("nav_goal_failed", "result_timeout")
+            self.get_logger().error("Navigation result is None")
+            self._publish_nav_result("nav_goal_failed", "result_none")
             return
 
         event_type = self._status_to_event(result.status)
         self.get_logger().info("Navigation finished with status={0}".format(result.status))
         self._publish_nav_result(event_type)
+
+    def _feedback_callback(self, feedback_msg) -> None:
+        try:
+            remaining = feedback_msg.feedback.distance_remaining
+            self.get_logger().info("Navigating, remaining={0:.2f}m".format(remaining))
+        except Exception:
+            pass
 
     def destroy_node(self):
         self._action_client.destroy()
