@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict, List, Optional
 
 from quadruped_llm_system.common.config import load_yaml
 from quadruped_llm_system.cognition.destination_registry import DestinationRegistry
@@ -8,7 +8,6 @@ from quadruped_llm_system.cognition.memory_store import MemoryStore
 
 
 class PlaceRepository:
-    # 对上层屏蔽“静态点位 + 动态点位”的双数据源细节。
     def __init__(self, static_yaml_name: str, memory_path: Path) -> None:
         self.static_yaml_name = static_yaml_name
         self.memory_store = MemoryStore(memory_path)
@@ -25,8 +24,7 @@ class PlaceRepository:
         return lowered.strip("_") or "point"
 
     def _reload_dynamic(self) -> None:
-        # 重新从 memory_points.json 构建动态点位，并和静态点位合并成统一索引。
-        rows: list[dict[str, Any]] = []
+        rows = []  # type: List[Dict[str, Any]]
         reserved_ids = set(self.static_registry.destinations.keys())
         reserved_aliases = set(self.static_registry.alias_to_id.keys())
 
@@ -47,7 +45,6 @@ class PlaceRepository:
                 key = DestinationRegistry._norm(str(alias))
                 if not key:
                     continue
-                # 动态点默认不覆盖静态点别名，避免运行时记忆把基础点位“顶掉”。
                 if key in reserved_aliases:
                     conflict = True
                     break
@@ -77,7 +74,6 @@ class PlaceRepository:
 
         self.dynamic_registry = DestinationRegistry(rows, frame_id=self.frame_id)
         merged_rows = []
-        # 上层只关心“有哪些可用地点”，不关心来源，所以这里合成统一视图。
         for item in self.static_registry.all() + self.dynamic_registry.all():
             merged_rows.append(
                 {
@@ -89,19 +85,19 @@ class PlaceRepository:
             )
         self.registry = DestinationRegistry(merged_rows, frame_id=self.frame_id)
 
-    def get(self, dest_id: str) -> dict[str, Any] | None:
+    def get(self, dest_id: str) -> Optional[Dict[str, Any]]:
         return self.registry.get(dest_id)
 
-    def resolve_direct(self, text: str) -> str | None:
+    def resolve_direct(self, text: str) -> Optional[str]:
         return self.registry.resolve_direct(text)
 
-    def rank_candidates(self, text: str, limit: int = 3) -> list[str]:
+    def rank_candidates(self, text: str, limit: int = 3) -> List[str]:
         return self.registry.rank_candidates(text, limit=limit)
 
-    def as_catalog(self) -> list[dict[str, Any]]:
+    def as_catalog(self) -> List[Dict[str, Any]]:
         return self.registry.as_catalog()
 
-    def pose_stamped_dict(self, dest_id: str) -> dict[str, Any]:
+    def pose_stamped_dict(self, dest_id: str) -> Dict[str, Any]:
         return self.registry.pose_stamped_dict(dest_id)
 
     def add_memory_point(
@@ -110,25 +106,23 @@ class PlaceRepository:
         x: float,
         y: float,
         yaw_deg: float,
-        aliases: list[str] | None = None,
-    ) -> dict[str, Any]:
-        # 运行时新增记忆点时生成 mem_* 风格 id，避免和静态点位混淆。
+        aliases: Optional[List[str]] = None,
+    ) -> Dict[str, Any]:
         clean_name = str(name).strip()
         if not clean_name:
             raise ValueError("memory point name required")
 
         alias_list = list(aliases or [])
-        candidate_id = f"mem_{self._slug(clean_name)}"
+        candidate_id = "mem_{0}".format(self._slug(clean_name))
         suffix = 1
         while self.get(candidate_id):
             suffix += 1
-            candidate_id = f"mem_{self._slug(clean_name)}_{suffix}"
+            candidate_id = "mem_{0}_{1}".format(self._slug(clean_name), suffix)
 
-        # 新点位写入前先做别名冲突检查，避免后续导航命中不确定目标。
         for alias in [candidate_id, clean_name] + alias_list:
             owner = self.resolve_direct(str(alias))
             if owner is not None:
-                raise ValueError(f"alias already in use: {alias}")
+                raise ValueError("alias already in use: {0}".format(alias))
 
         point = {
             "id": candidate_id,

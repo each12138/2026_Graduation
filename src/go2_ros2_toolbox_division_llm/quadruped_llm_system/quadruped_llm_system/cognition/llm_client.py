@@ -1,14 +1,13 @@
 import json
 import os
 import re
-from typing import Any
+from typing import Any, Dict, List
 
 import requests
 
 
 class LLMClient:
-    # 这里封装认知层对 LLM 的访问，当前主要用于导航意图辅助解析。
-    def __init__(self, runtime_cfg: dict) -> None:
+    def __init__(self, runtime_cfg: Dict[str, Any]) -> None:
         llm_cfg = runtime_cfg.get("llm", {})
         self.enabled = bool(llm_cfg.get("enabled", False))
         self.api_url = str(llm_cfg.get("api_url", "")).strip()
@@ -18,7 +17,7 @@ class LLMClient:
         self.api_key = os.getenv(str(llm_cfg.get("api_key_env", "DEEPSEEK_API_KEY")))
 
     @staticmethod
-    def _default_result(reason: str) -> dict[str, Any]:
+    def _default_result(reason: str) -> Dict[str, Any]:
         return {
             "intent": "unknown",
             "destination_id": None,
@@ -39,12 +38,12 @@ class LLMClient:
             return text[start : end + 1]
         return text
 
-    def _parse_response_content(self, content: str) -> dict[str, Any]:
+    def _parse_response_content(self, content: str) -> Dict[str, Any]:
         raw_json = self._extract_json_block(content)
         try:
             payload = json.loads(raw_json)
         except json.JSONDecodeError:
-            return self._default_result(f"unparsed_response:{content[:80]}")
+            return self._default_result("unparsed_response:{0}".format(content[:80]))
 
         if not isinstance(payload, dict):
             return self._default_result("llm_response_not_dict")
@@ -66,8 +65,7 @@ class LLMClient:
         result["reason"] = reason
         return result
 
-    def parse_nav_intent(self, text: str, catalog: list[dict[str, Any]]) -> dict[str, Any]:
-        # 如果没有启用 LLM，就明确回退给规则/候选排序链路处理。
+    def parse_nav_intent(self, text: str, catalog: List[Dict[str, Any]]) -> Dict[str, Any]:
         if not self.enabled or not self.api_key or not self.api_url:
             return self._default_result("llm_disabled")
 
@@ -80,13 +78,13 @@ class LLMClient:
             "confidence must be a number between 0 and 1. "
             "alternatives must be a list of destination IDs."
         )
-        user_prompt = (
-            f"Catalog: {json.dumps(catalog, ensure_ascii=False)}\n"
-            f"User: {text}"
+        user_prompt = "Catalog: {0}\nUser: {1}".format(
+            json.dumps(catalog, ensure_ascii=False),
+            text,
         )
 
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
+            "Authorization": "Bearer {0}".format(self.api_key),
             "Content-Type": "application/json",
         }
         body = {
@@ -111,7 +109,7 @@ class LLMClient:
         try:
             content = str(data["choices"][0]["message"]["content"]).strip()
         except (KeyError, IndexError, TypeError):
-            return self._default_result(f"unexpected_response:{str(data)[:80]}")
+            return self._default_result("unexpected_response:{0}".format(str(data)[:80]))
 
         return self._parse_response_content(content)
 

@@ -1,10 +1,11 @@
 import re
+from typing import Any, Dict, List, Optional
 
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 
-from quadruped_llm_system.common.config import load_yaml, config_dir
+from quadruped_llm_system.common.config import config_dir, load_yaml
 from quadruped_llm_system.common.events import make_event, new_request_id
 from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
 from quadruped_llm_system.cognition.llm_client import LLMClient
@@ -12,7 +13,6 @@ from quadruped_llm_system.cognition.place_repository import PlaceRepository
 
 
 class DialogueRouterNode(Node):
-    # 认知层入口：把用户文本分流到导航、澄清或普通对话响应链路。
     def __init__(self) -> None:
         super().__init__("dialogue_router_node")
 
@@ -26,7 +26,7 @@ class DialogueRouterNode(Node):
         self.max_clarify_turns = int(dialogue_cfg.get("max_clarify_turns", 2))
 
         self.mode = "IDLE"
-        self.clarify_candidates: list[str] = []
+        self.clarify_candidates = []  # type: List[str]
         self.clarify_turn = 0
 
         self.sub_text = self.create_subscription(String, "/from_human_text", self._on_text, 10)
@@ -35,11 +35,10 @@ class DialogueRouterNode(Node):
 
         self.get_logger().info("Dialogue router ready.")
 
-    def _publish_event(self, payload: dict) -> None:
+    def _publish_event(self, payload: Dict[str, Any]) -> None:
         self.pub_events.publish(json_msg(payload))
 
     def _looks_like_navigation(self, text: str) -> bool:
-        # 先用轻量关键词判断，避免所有输入都走 LLM。
         text = text.lower()
         keys = [
             "go to", "take me to", "navigate to", "where is", "find",
@@ -47,8 +46,7 @@ class DialogueRouterNode(Node):
         ]
         return any(k in text for k in keys)
 
-    # 澄清阶段用户可能会说“第一个/第二个”，这里做个简单的映射。
-    def _ordinal_pick(self, text: str, candidates: list[str]) -> str | None:
+    def _ordinal_pick(self, text: str, candidates: List[str]) -> Optional[str]:
         mapping = {
             "1": 0, "one": 0, "first": 0, "第一个": 0,
             "2": 1, "two": 1, "second": 1, "第二个": 1,
@@ -60,7 +58,6 @@ class DialogueRouterNode(Node):
                 return candidates[idx]
         return None
 
-    # 导航请求确认：发送 nav_ack_requested 事件，包含目的地 ID、名称、请求来源和置信度等信息。
     def _emit_ack(self, dest_id: str, request_source: str, confidence: float) -> None:
         dest = self.places.get(dest_id)
         request_id = new_request_id("nav")
@@ -79,8 +76,7 @@ class DialogueRouterNode(Node):
             )
         )
 
-    # 澄清请求：发送 nav_clarification_needed 事件，包含候选地点列表、用户原话、澄清原因等信息。
-    def _emit_clarification(self, utterance: str, candidates: list[str], reason: str) -> None:
+    def _emit_clarification(self, utterance: str, candidates: List[str], reason: str) -> None:
         self.mode = "AWAITING_CLARIFICATION"
         self.clarify_candidates = candidates[: self.max_candidates]
         self.clarify_turn += 1
@@ -103,9 +99,7 @@ class DialogueRouterNode(Node):
             )
         )
 
-    # 澄清回复处理：如果用户选择了候选项或直接说了地点名，发送确认事件；如果超过澄清轮次，发送澄清失败事件；否则继续请求澄清。
     def _handle_clarification_reply(self, text: str) -> None:
-        # 澄清阶段优先接受“第一个/第二个”这类选择，也支持再次直呼地点名。
         picked = self._ordinal_pick(text, self.clarify_candidates)
         if picked is None:
             direct = self.places.resolve_direct(text)
@@ -132,9 +126,7 @@ class DialogueRouterNode(Node):
 
         self._emit_clarification(text, self.clarify_candidates, "clarification_reply_unresolved")
 
-    # 导航请求处理：先尝试精确别名匹配，再用轻量关键词排序，如果仍不确定则调用 LLM 辅助解析，最后进入澄清流程。
     def _handle_navigation_request(self, text: str) -> None:
-        # 导航解析顺序：精确别名 -> 轻量排序 -> LLM 辅助 -> 进入澄清。
         direct = self.places.resolve_direct(text)
         if direct:
             self._emit_ack(direct, "direct_alias", 0.95)
@@ -165,16 +157,13 @@ class DialogueRouterNode(Node):
 
         self._emit_clarification(text, ranked, "ambiguous_destination")
 
-
-    # 普通对话处理：把用户输入原样转发给对话系统，等待后续事件触发响应生成。
     def _on_text(self, msg: String) -> None:
         text = msg.data.strip()
         if not text:
             return
 
-        self.get_logger().info(f"user_text={text}")
+        self.get_logger().info("user_text={0}".format(text))
 
-        # 如果当前处于澄清轮次，优先把输入解释成对候选地点的回答。
         if self.mode == "AWAITING_CLARIFICATION":
             self._handle_clarification_reply(text)
             return
@@ -191,7 +180,6 @@ class DialogueRouterNode(Node):
             )
         )
 
-    # 监听导航相关事件，如果检测到导航开始或结束（成功/失败/取消），则重置状态回到 IDLE。
     def _on_event(self, msg: String) -> None:
         payload = parse_json_msg(msg)
         if not payload:
