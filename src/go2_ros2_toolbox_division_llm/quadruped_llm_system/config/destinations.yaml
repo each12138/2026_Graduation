@@ -4,6 +4,6 @@ destinations:
     name: 起点
     aliases: [起点, 出发点, 起始点, start, starting position, origin]
     pose:
-      x: 0.42
-      y: -1.66
+      x: 2.00
+      y: 3.00
       yaw_deg: 180.0
