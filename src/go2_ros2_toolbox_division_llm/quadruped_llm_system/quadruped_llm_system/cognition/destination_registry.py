@@ -77,7 +77,7 @@ class DestinationRegistry:
     def resolve_direct(self, text: str) -> Optional[str]:
         return self.alias_to_id.get(self._norm(text))
 
-    def rank_candidates(self, text: str, limit: int = 3) -> List[str]:
+    def scored_candidates(self, text: str, limit: int = 3) -> List[Dict[str, Any]]:
         needle = self._norm(text)
         if not needle:
             return []
@@ -93,10 +93,13 @@ class DestinationRegistry:
                 seq = self._sequence_score(needle, alias)
                 score = 0.7 * seq + 0.3 * overlap
                 best = max(best, score)
-            scored.append((best, dest_id))
+            scored.append({"destination_id": dest_id, "score": best})
 
-        scored.sort(key=lambda x: x[0], reverse=True)
-        return [dest_id for _, dest_id in scored[:limit]]
+        scored.sort(key=lambda x: float(x["score"]), reverse=True)
+        return scored[:limit]
+
+    def rank_candidates(self, text: str, limit: int = 3) -> List[str]:
+        return [str(item["destination_id"]) for item in self.scored_candidates(text, limit=limit)]
 
     @staticmethod
     def _sequence_score(a: str, b: str) -> float:

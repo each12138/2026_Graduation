@@ -94,6 +94,9 @@ class PlaceRepository:
     def rank_candidates(self, text: str, limit: int = 3) -> List[str]:
         return self.registry.rank_candidates(text, limit=limit)
 
+    def scored_candidates(self, text: str, limit: int = 3) -> List[Dict[str, Any]]:
+        return self.registry.scored_candidates(text, limit=limit)
+
     def as_catalog(self) -> List[Dict[str, Any]]:
         return self.registry.as_catalog()
 

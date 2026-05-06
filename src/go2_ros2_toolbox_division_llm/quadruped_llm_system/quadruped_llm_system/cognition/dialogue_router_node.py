@@ -22,6 +22,7 @@ class DialogueRouterNode(Node):
 
         dialogue_cfg = self.runtime_cfg.get("dialogue", {})
         self.nav_conf_threshold = float(dialogue_cfg.get("nav_confidence_threshold", 0.72))
+        self.nav_match_threshold = float(dialogue_cfg.get("nav_match_threshold", 0.45))
         self.max_candidates = int(dialogue_cfg.get("max_candidates", 3))
         self.max_clarify_turns = int(dialogue_cfg.get("max_clarify_turns", 2))
 
@@ -42,9 +43,19 @@ class DialogueRouterNode(Node):
         text = text.lower()
         keys = [
             "go to", "take me to", "navigate to", "where is", "find",
-            "去", "带我去", "导航到", "去往", "我要去", "在哪",
+            "去", "带我去", "导航到", "去往", "我要去", "在哪", "找到",
         ]
         return any(k in text for k in keys)
+
+    def _extract_destination_query(self, text: str) -> str:
+        cleaned = text.strip()
+        patterns = [
+            r"^(go to|take me to|navigate to|where is|find)\s+",
+            r"^(带我去|导航到|去往|我要去|去|找到)",
+        ]
+        for pattern in patterns:
+            cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE).strip()
+        return cleaned or text.strip()
 
     def _ordinal_pick(self, text: str, candidates: List[str]) -> Optional[str]:
         mapping = {
@@ -127,13 +138,15 @@ class DialogueRouterNode(Node):
         self._emit_clarification(text, self.clarify_candidates, "clarification_reply_unresolved")
 
     def _handle_navigation_request(self, text: str) -> None:
-        direct = self.places.resolve_direct(text)
+        query = self._extract_destination_query(text)
+
+        direct = self.places.resolve_direct(query)
         if direct:
             self._emit_ack(direct, "direct_alias", 0.95)
             return
 
-        ranked = self.places.rank_candidates(text, self.max_candidates)
-        if not ranked:
+        scored = self.places.scored_candidates(query, self.max_candidates)
+        if not scored:
             self._publish_event(
                 make_event(
                     "nav_unresolved",
@@ -144,18 +157,34 @@ class DialogueRouterNode(Node):
             )
             return
 
-        if len(ranked) == 1:
-            self._emit_ack(ranked[0], "heuristic_single", 0.78)
+        top_score = float(scored[0].get("score", 0.0))
+        if top_score < self.nav_match_threshold:
+            self._publish_event(
+                make_event(
+                    "nav_unresolved",
+                    source="dialogue_router",
+                    utterance=text,
+                    normalized_utterance=query,
+                    reason="low_similarity",
+                    top_score=round(top_score, 3),
+                )
+            )
             return
 
-        llm_parsed = self.llm.parse_nav_intent(text, self.places.as_catalog())
+        ranked = [str(item["destination_id"]) for item in scored]
+
+        if len(ranked) == 1:
+            self._emit_ack(ranked[0], "heuristic_single", max(0.78, top_score))
+            return
+
+        llm_parsed = self.llm.parse_nav_intent(query, self.places.as_catalog())
         dest_id = llm_parsed.get("destination_id")
         conf = float(llm_parsed.get("confidence", 0.0) or 0.0)
         if isinstance(dest_id, str) and self.places.get(dest_id) and conf >= self.nav_conf_threshold:
             self._emit_ack(dest_id, "llm_direct", conf)
             return
 
-        self._emit_clarification(text, ranked, "ambiguous_destination")
+        self._emit_clarification(query, ranked, "ambiguous_destination")
 
     def _on_text(self, msg: String) -> None:
         text = msg.data.strip()

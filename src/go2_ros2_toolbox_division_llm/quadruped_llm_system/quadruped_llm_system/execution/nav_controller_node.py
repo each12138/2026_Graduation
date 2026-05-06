@@ -72,11 +72,10 @@ class NavControllerNode(Node):
         if ev_type == "speech_done" and str(payload.get("speech_kind", "")) == "nav_ack":
             if self.mode != "AWAITING_ACK_PLAYBACK" or request_id != self.pending_request_id:
                 return
-            self._send_goal(self.pending_destination_id)
-            self.mode = "AWAITING_NAV_RESULT"
             self.active_request_id = self.pending_request_id
             self.active_destination_id = self.pending_destination_id
             self.active_started_at = time.monotonic()
+            self.mode = "AWAITING_NAV_RESULT"
             dest = self.places.get(self.active_destination_id)
             self._publish_event(
                 make_event(
@@ -87,6 +86,7 @@ class NavControllerNode(Node):
                     destination_name=dest["name"],
                 )
             )
+            self._send_goal(self.pending_destination_id)
             self.pending_request_id = ""
             self.pending_destination_id = ""
             return
