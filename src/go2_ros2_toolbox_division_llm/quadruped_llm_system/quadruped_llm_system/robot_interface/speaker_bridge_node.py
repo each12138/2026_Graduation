@@ -5,8 +5,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 from quadruped_llm_system.common.config import load_yaml
-from quadruped_llm_system.common.events import make_event
-from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
+from quadruped_llm_system.common.events import from_json, make_event, to_json
 
 
 class SpeakerBridgeNode(Node):
@@ -23,7 +22,7 @@ class SpeakerBridgeNode(Node):
         self.get_logger().info("Speaker bridge ready. Using simulated playback.")
 
     def _on_audio(self, msg: String) -> None:
-        payload = parse_json_msg(msg)
+        payload = from_json(msg.data)
         if not payload:
             return
 
@@ -35,17 +34,17 @@ class SpeakerBridgeNode(Node):
         self.get_logger().info(f"[speak:{speech_kind}] {text}")
         time.sleep(self.simulated_playback_sec)
 
-        self.pub_events.publish(
-            json_msg(
-                make_event(
-                    "speech_done",
-                    source="speaker_bridge",
-                    request_id=request_id,
-                    speech_kind=speech_kind,
-                    stream_id=stream_id,
-                )
+        event_msg = String()
+        event_msg.data = to_json(
+            make_event(
+                "speech_done",
+                source="speaker_bridge",
+                request_id=request_id,
+                speech_kind=speech_kind,
+                stream_id=stream_id,
             )
         )
+        self.pub_events.publish(event_msg)
 
 
 def main() -> None:

@@ -6,8 +6,7 @@ from rclpy.action import ActionClient
 from rclpy.node import Node
 from std_msgs.msg import String
 
-from quadruped_llm_system.common.events import make_event
-from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
+from quadruped_llm_system.common.events import from_json, make_event, to_json
 
 
 class NavGoalRelayNode(Node):
@@ -30,7 +29,7 @@ class NavGoalRelayNode(Node):
         self.get_logger().info("Nav goal relay ready. Using real NavigateToPose action.")
 
     def _on_event(self, msg: String) -> None:
-        payload = parse_json_msg(msg)
+        payload = from_json(msg.data)
         if not payload:
             return
 
@@ -42,18 +41,18 @@ class NavGoalRelayNode(Node):
         self.active_destination_name = str(payload.get("destination_name", "")).strip()
 
     def _publish_nav_result(self, event_type: str, reason: str = "") -> None:
-        self.pub_events.publish(
-            json_msg(
-                make_event(
-                    event_type,
-                    source="nav_goal_relay",
-                    request_id=self.active_request_id,
-                    destination_id=self.active_destination_id,
-                    destination_name=self.active_destination_name,
-                    reason=reason,
-                )
+        msg = String()
+        msg.data = to_json(
+            make_event(
+                event_type,
+                source="nav_goal_relay",
+                request_id=self.active_request_id,
+                destination_id=self.active_destination_id,
+                destination_name=self.active_destination_name,
+                reason=reason,
             )
         )
+        self.pub_events.publish(msg)
 
     def _status_to_event(self, status: int) -> str:
         if status == GoalStatus.STATUS_SUCCEEDED:

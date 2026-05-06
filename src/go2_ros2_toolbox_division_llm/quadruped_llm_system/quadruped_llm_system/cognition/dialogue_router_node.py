@@ -6,8 +6,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 from quadruped_llm_system.common.config import config_dir, load_yaml
-from quadruped_llm_system.common.events import make_event, new_request_id
-from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
+from quadruped_llm_system.common.events import from_json, make_event, new_request_id, to_json
 from quadruped_llm_system.cognition.llm_client import LLMClient
 from quadruped_llm_system.cognition.place_repository import PlaceRepository
 
@@ -37,7 +36,9 @@ class DialogueRouterNode(Node):
         self.get_logger().info("Dialogue router ready.")
 
     def _publish_event(self, payload: Dict[str, Any]) -> None:
-        self.pub_events.publish(json_msg(payload))
+        msg = String()
+        msg.data = to_json(payload)
+        self.pub_events.publish(msg)
 
     def _looks_like_navigation(self, text: str) -> bool:
         text = text.lower()
@@ -210,7 +211,7 @@ class DialogueRouterNode(Node):
         )
 
     def _on_event(self, msg: String) -> None:
-        payload = parse_json_msg(msg)
+        payload = from_json(msg.data)
         if not payload:
             return
 

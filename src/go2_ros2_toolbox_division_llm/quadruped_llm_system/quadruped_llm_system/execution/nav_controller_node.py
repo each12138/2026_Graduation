@@ -7,8 +7,7 @@ from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped
 
 from quadruped_llm_system.common.config import load_yaml, config_dir
-from quadruped_llm_system.common.events import make_event
-from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
+from quadruped_llm_system.common.events import from_json, make_event, to_json
 from quadruped_llm_system.cognition.place_repository import PlaceRepository
 
 
@@ -39,7 +38,9 @@ class NavControllerNode(Node):
         self.get_logger().info("Nav controller ready.")
 
     def _publish_event(self, payload: dict) -> None:
-        self.pub_events.publish(json_msg(payload))
+        msg = String()
+        msg.data = to_json(payload)
+        self.pub_events.publish(msg)
 
     def _send_goal(self, dest_id: str) -> None:
         pose_dict = self.places.pose_stamped_dict(dest_id)
@@ -56,7 +57,7 @@ class NavControllerNode(Node):
         self.pub_goal.publish(msg)
 
     def _on_event(self, msg: String) -> None:
-        payload = parse_json_msg(msg)
+        payload = from_json(msg.data)
         if not payload:
             return
 

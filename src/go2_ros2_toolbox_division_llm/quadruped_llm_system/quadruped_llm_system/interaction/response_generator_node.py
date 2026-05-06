@@ -5,8 +5,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 from quadruped_llm_system.common.config import load_yaml
-from quadruped_llm_system.common.events import new_request_id
-from quadruped_llm_system.common.ros_json_topic import json_msg, parse_json_msg
+from quadruped_llm_system.common.events import from_json, new_request_id, to_json
 
 
 class ResponseGeneratorNode(Node):
@@ -34,7 +33,9 @@ class ResponseGeneratorNode(Node):
             "request_id": request_id,
             "text": text,
         }
-        self.pub_audio.publish(json_msg(payload))
+        msg = String()
+        msg.data = to_json(payload)
+        self.pub_audio.publish(msg)
 
     def _render(self, payload: Dict[str, Any]) -> Optional[Tuple[str, str]]:
         ev_type = str(payload.get("type", "")).strip()
@@ -66,7 +67,7 @@ class ResponseGeneratorNode(Node):
         return None
 
     def _on_event(self, msg: String) -> None:
-        payload = parse_json_msg(msg)
+        payload = from_json(msg.data)
         if not payload:
             return
 
