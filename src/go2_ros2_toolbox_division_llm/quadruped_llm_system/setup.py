@@ -35,6 +35,7 @@ setup(
             "nav_controller_node = quadruped_llm_system.execution.nav_controller_node:main",
             "speaker_bridge_node = quadruped_llm_system.robot_interface.speaker_bridge_node:main",
             "nav_goal_relay_node = quadruped_llm_system.robot_interface.nav_goal_relay_node:main",
+            "text_bridge_node = quadruped_llm_system.interaction.text_bridge_node:main",
         ],
     },
 )

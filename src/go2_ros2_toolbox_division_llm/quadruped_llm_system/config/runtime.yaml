@@ -23,3 +23,12 @@ llm:
   temperature: 0.2
   timeout_s: 20
   enabled: false
+
+voice_bridge:
+  bind_host: 0.0.0.0
+  bind_port: 8765
+  max_text_len: 120
+  allow_sources:
+    - pc_realtime
+  token_env: VOICE_BRIDGE_TOKEN
+

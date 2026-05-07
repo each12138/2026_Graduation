@@ -1,0 +1,14 @@
+bridge:
+  base_url: "http://192.168.123.18:8765"
+  token: ""
+  timeout_s: 3.0
+
+whisper_asr:
+  model_name: "small"
+  language: "zh"
+  prompt: ""
+  sample_rate: 16000
+  chunk_size: 1024
+  record_seconds: 5.0
+  channels: 1
+  wav_path: "temp.wav"
